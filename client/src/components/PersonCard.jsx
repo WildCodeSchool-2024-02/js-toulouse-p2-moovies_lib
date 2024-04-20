@@ -15,15 +15,37 @@ function PersonCard({ person }) {
           Nom : <span>{name}</span>{" "}
         </p>
       </div>
-      {person.profile_path && (
+      {person.profile_path ? (
         <>
           <br />{" "}
-          <img
-            className="person-img"
-            src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
-            alt={`img-person-${person.profile_path}`}
-          />
+          <div className="person-img-container">
+            <img
+              className="person-img"
+              src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
+              alt={`img-person-${person.profile_path}`}
+            />
+          </div>
         </>
+      ) : (
+        <div className="person-img-container">
+          <svg width="80" height="80">
+            <circle cx="50%" cy="50%" r="50%" fill="#aeaeae" />
+            <text
+              x="50%"
+              y="50%"
+              textAnchor="middle"
+              fill="white"
+              fontSize="2rem"
+              fontFamily="Arial"
+              dy=".3em"
+            >
+              {name
+                .split(" ")
+                .map((w) => w.charAt(0))
+                .join("")}
+            </text>
+          </svg>
+        </div>
       )}
     </div>
   );
