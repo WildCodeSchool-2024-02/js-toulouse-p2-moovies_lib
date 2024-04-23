@@ -1,7 +1,8 @@
 import "./App.css";
+import Filter from "./components/Filter";
 
 function App() {
-  return <h1>hello</h1>;
+  return <Filter />;
 }
 
 export default App;
