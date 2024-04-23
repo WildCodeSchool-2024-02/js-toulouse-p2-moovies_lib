@@ -1,0 +1,26 @@
+:root {
+  background-color: #0e141b;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  border: solid;
+  background-color: #1d2a38;
+}
+
+.Logo {
+  border-radius: 50%;
+  width: 8%;
+}
+
+.site {
+  color: white;
+  padding: 2%;
+}
+
+h2 {
+  display: flex;
+  justify-content: center;
+  color: white;
+}

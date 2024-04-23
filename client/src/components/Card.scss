@@ -1,0 +1,31 @@
+.Card {
+  display: flex;
+  flex-direction: column;
+  border: solid;
+  border-radius: 5%;
+  background-color: #1d2a38;
+}
+
+.Title {
+  display: flex;
+  justify-content: start;
+  color: white;
+  padding: 1rem;
+  margin: 0;
+}
+
+.Images {
+  border-radius: 5%;
+  padding: 1rem;
+}
+
+.Description {
+  padding: 5%;
+  color: white;
+  font-size: larger;
+}
+
+.contenaire {
+  display: flex;
+  justify-content: space-around;
+}

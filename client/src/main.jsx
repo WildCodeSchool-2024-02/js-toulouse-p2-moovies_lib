@@ -27,7 +27,7 @@ const router = createBrowserRouter([
     element: <Filter />,
   },
   {
-    path: "/detail/:filmid",
+    path: "/details/:filmid",
     element: <Details />,
   },
 ]);
