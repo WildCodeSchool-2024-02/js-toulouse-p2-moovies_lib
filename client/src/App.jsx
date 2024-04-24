@@ -5,7 +5,6 @@ import { ThemeContext } from "./contexts/ThemeContext";
 
 function App() {
   const { theme, setTheme } = useContext(ThemeContext);
-
   function toggleTheme() {
     if (theme === "dark") {
       setTheme("light");
