@@ -4,7 +4,6 @@ import PersonCard from "../components/PersonCard";
 import "./Details.scss";
 
 function Details() {
-  const token = import.meta.env.VITE_API_TOKEN;
   const { filmid } = useParams();
   const [fetchResults, setFetchResults] = useState({});
   const [moreCrew, setMoreCrew] = useState(false);
@@ -38,15 +37,15 @@ function Details() {
     return comment;
   };
 
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  };
-
   useEffect(() => {
+    const token = import.meta.env.VITE_MY_API_TOKEN;
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
     fetch(
       `https://api.themoviedb.org/3/movie/${filmid}?append_to_response=credits&language=fr`,
       options
