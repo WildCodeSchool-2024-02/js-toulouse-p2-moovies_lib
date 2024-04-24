@@ -7,6 +7,7 @@ import App from "./App";
 import Home from "./pages/Home";
 import Details from "./pages/Details";
 import Search from "./pages/Search";
+import Filter from "./pages/Filter";
 
 const router = createBrowserRouter([
   {

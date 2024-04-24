@@ -1,9 +1,9 @@
 import "./App.css";
-import Filter from "./components/Filter";
+import Home from "./pages/Home";
 import "./reset.css";
 
 function App() {
-  return <Filter />;
+  return <Home />;
 }
 
 export default App;
