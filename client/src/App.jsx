@@ -1,12 +1,28 @@
-import "./App.css";
+import { useContext } from "react";
+import "./App.scss";
 import SearchBar from "./components/SearchBar";
-import "./reset.css";
+import Home from "./pages/Home";
+import { ThemeContext } from "./contexts/ThemeContext";
 
 function App() {
+  const { theme, setTheme } = useContext(ThemeContext);
+  function toggleTheme() {
+    if (theme === "dark") {
+      setTheme("light");
+    } else {
+      setTheme("dark");
+    }
+  }
+
   return (
-    <div>
+    <>
+      <button onClick={toggleTheme} type="button">
+        changer de theme
+      </button>
+      <p>couleur du theme: {theme}</p>
       <SearchBar />
-    </div>
+      <Home />
+    </>
   );
 }
 

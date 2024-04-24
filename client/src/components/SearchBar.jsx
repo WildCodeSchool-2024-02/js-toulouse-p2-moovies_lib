@@ -25,7 +25,10 @@ function SearchBar() {
       )
         .then((response) => response.json())
         .then((data) => {
-          setSearchResult(data.results);
+          const filteredDatas = data.results.filter((e) => {
+            return e.title.toLowerCase().startsWith(searchText);
+          });
+          setSearchResult(filteredDatas);
           setTotalPages(data.total_pages);
         })
         .catch((error) => {
@@ -35,11 +38,24 @@ function SearchBar() {
   }, [searchText, currentPage]);
 
   const handlePrevious = () => {
-    setCurrentPage((prev) => Math.max(prev - 1, 1));
+    setCurrentPage((prev) => {
+      Math.max(prev - 1, 1);
+      const prevPage = prev < totalPages ? prev - 1 : prev;
+      if (prevPage !== prev) {
+        window.scrollTo(0, 0);
+      }
+      return prevPage;
+    });
   };
 
   const handleNext = () => {
-    setCurrentPage((prev) => (prev < totalPages ? prev + 1 : prev));
+    setCurrentPage((prev) => {
+      const nextPage = prev < totalPages ? prev + 1 : prev;
+      if (nextPage !== prev) {
+        window.scrollTo(0, 0);
+      }
+      return nextPage;
+    });
   };
 
   return (
@@ -50,6 +66,13 @@ function SearchBar() {
         onChange={(e) => setSearchText(e.target.value)}
         placeholder="Cherche Ton Film"
       />
+      {searchResult.length !== 0 && searchText !== "" && (
+        <div className="container-handleChange">
+          <p>
+            Page {currentPage} sur {totalPages}
+          </p>
+        </div>
+      )}
       {searchResult.length > 0 &&
         searchText !== "" &&
         searchResult.map((movie) => (
