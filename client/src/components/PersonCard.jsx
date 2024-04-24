@@ -9,7 +9,11 @@ function PersonCard({ person }) {
       <div className="person-description">
         <p>
           {job ? `Job : ` : `Role : `}
-          {job ? <span>{job}</span> : <span>{character || <em>{noInformations}</em>}</span>}
+          {job ? (
+            <span>{job}</span>
+          ) : (
+            <span>{character || <em>{noInformations}</em>}</span>
+          )}
         </p>
         <p>
           Nom : <span>{name}</span>{" "}

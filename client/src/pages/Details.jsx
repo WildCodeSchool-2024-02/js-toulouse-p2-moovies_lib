@@ -4,7 +4,6 @@ import PersonCard from "../components/PersonCard";
 import "./Details.scss";
 
 function Details() {
-  const token = import.meta.env.VITE_MY_API_TOKEN;
   const { filmid } = useParams();
   const [fetchResults, setFetchResults] = useState({});
   const [moreCrew, setMoreCrew] = useState(false);
@@ -38,18 +37,18 @@ function Details() {
     return comment;
   };
 
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  };
-
   useEffect(() => {
+    const token = import.meta.env.VITE_MY_API_TOKEN;
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
     fetch(
       `https://api.themoviedb.org/3/movie/${filmid}?append_to_response=credits&language=fr`,
-      options,
+      options
     )
       .then((r) => r.json())
       .then((data) => setFetchResults(data));
@@ -58,7 +57,9 @@ function Details() {
   return (
     <div className="details-container">
       <h1>{fetchResults.original_title}</h1>
-      {fetchResults.original_title !== fetchResults.title && <em>{fetchResults.title}</em>}
+      {fetchResults.original_title !== fetchResults.title && (
+        <em>{fetchResults.title}</em>
+      )}
       <h2>Détails</h2>
       <div className="details-container-fiche">
         <img
@@ -72,7 +73,7 @@ function Details() {
               <div>Genre : </div>
               <div>
                 {fetchResults.genres?.map((genre, i, arr) =>
-                  i === arr.length - 1 ? genre.name : `${genre.name}, `,
+                  i === arr.length - 1 ? genre.name : `${genre.name}, `
                 )}
               </div>
             </li>
@@ -83,21 +84,26 @@ function Details() {
               <div>Version originale : </div>
               <div>
                 {fetchResults.spoken_languages?.map((language, i, arr) => {
-                  const displayName = new Intl.DisplayNames("fr", { type: "language" }).of([
-                    language.iso_639_1,
-                  ]);
-                  return i === arr.length - 1 ? displayName : `${displayName}, `;
+                  const displayName = new Intl.DisplayNames("fr", {
+                    type: "language",
+                  }).of([language.iso_639_1]);
+                  return i === arr.length - 1
+                    ? displayName
+                    : `${displayName}, `;
                 })}
               </div>
             </li>
             <li>
               <div>Date de sortie :</div>
-              <div>{fetchResults.release_date?.split("-").reverse().join("-")}</div>
+              <div>
+                {fetchResults.release_date?.split("-").reverse().join("-")}
+              </div>
             </li>
           </ul>
           <ul>
             <li>
-              <div>Note moyenne :</div> <div>{fetchResults.vote_average}/10</div>
+              <div>Note moyenne :</div>{" "}
+              <div>{fetchResults.vote_average}/10</div>
             </li>
             <li>
               <div>Nombre de votants :</div>
@@ -112,14 +118,15 @@ function Details() {
           </ul>
           <ul>
             <li>
-              <div>Réalisation : </div> <div>{fetchResults.credits?.crew[0]?.name} </div>
+              <div>Réalisation : </div>{" "}
+              <div>{fetchResults.credits?.crew[0]?.name} </div>
             </li>
 
             <li>
               <div>Société de production : </div>
               <div>
                 {fetchResults.production_companies?.map((companie, i, arr) =>
-                  i === arr.length - 1 ? companie.name : `${companie.name}, `,
+                  i === arr.length - 1 ? companie.name : `${companie.name}, `
                 )}
               </div>
             </li>
@@ -127,7 +134,9 @@ function Details() {
               <div> Pays d'origine : </div>
               <div>
                 {fetchResults.origin_country?.map((country, i, arr) => {
-                  const regionName = new Intl.DisplayNames(["fr"], { type: "region" }).of(country);
+                  const regionName = new Intl.DisplayNames(["fr"], {
+                    type: "region",
+                  }).of(country);
                   return i === arr.length - 1 ? regionName : `${regionName}, `;
                 })}{" "}
               </div>
@@ -173,7 +182,7 @@ function Details() {
               <PersonCard person={acteur} key={acteur.credit_id} />
             ) : (
               i < 4 && <PersonCard person={acteur} key={acteur.credit_id} />
-            ),
+            )
           )}
         </div>
         <button type="button" onClick={() => setMoreCasting(!moreCasting)}>
@@ -189,7 +198,7 @@ function Details() {
               <PersonCard person={crew} key={crew.credit_id} />
             ) : (
               i < 4 && <PersonCard person={crew} key={crew.credit_id} />
-            ),
+            )
           )}
         </div>{" "}
         <button type="button" onClick={() => setMoreCrew(!moreCrew)}>
