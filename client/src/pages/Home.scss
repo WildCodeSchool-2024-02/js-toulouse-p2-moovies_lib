@@ -5,7 +5,6 @@
 .header {
   display: flex;
   justify-content: space-between;
-  border: solid;
   background-color: #1d2a38;
 }
 
@@ -23,4 +22,22 @@ h2 {
   display: flex;
   justify-content: center;
   color: white;
+}
+
+.direction {
+  display: flex;
+  justify-content: space-around;
+  padding: 5%;
+}
+
+.présentation {
+  padding: 5%;
+}
+
+.ure-welcom {
+  padding: 5%;
+}
+
+.selection {
+  padding: 8%;
 }
