@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./SearchBar.scss";
 
 function SearchBar() {
   const [searchText, setSearchText] = useState("");
@@ -42,7 +43,7 @@ function SearchBar() {
   };
 
   return (
-    <div>
+    <div className="container-searchBar">
       <input
         type="text"
         value={searchText}

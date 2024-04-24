@@ -1,0 +1,19 @@
+.container-searchBar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.container-handleChange {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.container-btn {
+  display: flex;
+  gap: 10px;
+}
