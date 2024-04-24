@@ -55,9 +55,9 @@ button {
   color: $textColor;
   padding: $spacing;
   border-radius: 15px;
-}
-button:hover {
-  filter: drop-shadow(0 0 5px $textColor);
+  &:hover {
+    filter: drop-shadow(0 0 5px $textColor);
+  }
 }
 
 .details-container {
@@ -127,7 +127,6 @@ button:hover {
   }
   .crew-casting-container {
     @include flexDisplay(column, center, center);
-
     width: 100%;
     .crew-casting {
       @include flexDisplay(column, center, center);
