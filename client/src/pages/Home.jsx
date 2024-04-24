@@ -6,7 +6,7 @@ import logo from "../assets/images/logo.jpg";
 
 function Home() {
   const [data, setData] = useState();
-  const [data2, setData2] = useState();
+  const [dataPopularity, setDataPopularity] = useState();
   const [popularity] = useState(50);
 
   useEffect(() => {
@@ -48,17 +48,17 @@ function Home() {
           `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${randomNumber}&sort_by=popularity.desc&certification_country=US&certification.lte=PG-16&popularity.gte  =${minPopularity}`,
           options
         );
-        const fetchedData2 = await response.json();
+        const fetchedDataPopularity = await response.json();
 
         // ici une fonction pour prendre en fonction de la popularité
 
-        const popularMovies = fetchedData2.results.filter(
+        const popularMovies = fetchedDataPopularity.results.filter(
           (movie) => movie.popularity >= minPopularity
         );
 
-        const randomMovie2 =
+        const randomMoviePopularity =
           popularMovies[Math.floor(Math.random() * popularMovies.length - 1)];
-        setData2(randomMovie2);
+        setDataPopularity(randomMoviePopularity);
       } catch (error) {
         console.error(error);
       }
@@ -70,64 +70,56 @@ function Home() {
   return (
     <>
       <header className="header">
-        <img className="Logo" src={logo} alt="" />
-        <h1 className="site">Moovies Lib</h1>
+        <img className="logo" src={logo} alt="" />
+        <h1>Moovies Lib</h1>
       </header>
-      <div className="présentation">
-        <h2 className="ure-welcom">Bienvenue !</h2>
+      <div className="presentation">
+        <h2>Bienvenue sur Moovies Lib - Votre référence cinématographique!</h2>
         <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi
-          quisquam veritatis incidunt omnis doloribus id, minima quibusdam eius
-          quis ab similique totam voluptatem odio debitis. Harum voluptatem quae
-          commodi rerum? Et laboriosam possimus repellendus sit commodi dicta
-          quasi nobis eos facilis dolorem corrupti placeat consequuntur ex natus
-          ullam, maiores magnam neque architecto cum! Distinctio, aliquid animi
-          modi sed laboriosam veniam! Odit, voluptate deserunt placeat excepturi
-          mollitia pariatur vero quos nihil necessitatibus sit porro reiciendis
-          ab neque assumenda illo eaque doloremque quasi voluptatem nemo. Nihil
-          est saepe odit, cumque aliquam optio! Laudantium sapiente molestias
-          neque, fugit quaerat sed mollitia fugiat ad veniam quis laboriosam
-          aperiam necessitatibus eligendi at architecto ab reprehenderit
-          explicabo reiciendis voluptatem tempore magnam recusandae quidem harum
-          repellat. Quas? Quos culpa ipsum omnis quas incidunt sit labore sunt
-          ducimus ullam? Molestiae fuga dolorem minus ea sed beatae, quidem
-          reiciendis corporis provident! Sunt, beatae? Nulla itaque animi vel
-          praesentium enim.
+          Découvrez Moovies Lib, la plateforme ultime pour les amateurs de films
+          et de séries, conçue pour explorer, évaluer et discuter de vos œuvres
+          cinématographiques préférées. Inspiré par The Movie Database (TMDB),
+          Moovies Lib offre une interface utilisateur élégante et intuitive qui
+          permet aux cinéphiles de naviguer facilement à travers une vaste base
+          de données de films et de séries TV.
         </p>
       </div>
 
       <div className="direction">
         <Link to="/search">
-          <button type="button">je sais ce que je veux !</button>
+          <button type="button">Je sais ce que je veux !</button>
         </Link>
         <Link to="/filter">
           <button type="button">Guide moi</button>
         </Link>
       </div>
-      <h2 className="selection">Selection du jour!</h2>
-      <div>
-        <h2 className="title-card">Nanar</h2>
-        {data && (
-          <Card
-            title={data?.original_title}
-            poster={`https://image.tmdb.org/t/p/w500/${data && data.poster_path}`}
-            overview={data?.overview}
-            voteAverage={data?.vote_average}
-            filmid={data?.id}
-          />
-        )}
-      </div>
-      <div>
-        <h2 className="title-card">Pépite</h2>
-        {data2 && (
-          <Card
-            title={data2?.original_title}
-            poster={`https://image.tmdb.org/t/p/w500/${data2 && data2.poster_path}`}
-            overview={data2?.overview}
-            voteAverage={data2?.vote_average}
-            filmid={data2?.id}
-          />
-        )}
+
+      <h2 className="selection">Sélection du jour!</h2>
+      <div className="container-cards">
+        <div>
+          <h2 className="title-card">Nanar</h2>
+          {data && (
+            <Card
+              title={data?.original_title}
+              poster={`https://image.tmdb.org/t/p/w500/${data && data.poster_path}`}
+              overview={data?.overview}
+              voteAverage={data?.vote_average}
+              filmid={data?.id}
+            />
+          )}
+        </div>
+        <div>
+          <h2 className="title-card">Pépite</h2>
+          {dataPopularity && (
+            <Card
+              title={dataPopularity?.original_title}
+              poster={`https://image.tmdb.org/t/p/w500/${dataPopularity && dataPopularity.poster_path}`}
+              overview={dataPopularity?.overview}
+              voteAverage={dataPopularity?.vote_average}
+              filmid={dataPopularity?.id}
+            />
+          )}
+        </div>
       </div>
     </>
   );

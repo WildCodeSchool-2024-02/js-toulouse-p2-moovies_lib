@@ -4,10 +4,8 @@ import PropTypes from "prop-types";
 
 function Card({ title, poster, overview, voteAverage, filmid }) {
   function convertToStars(average) {
-    // Arrondir à l'entier le plus proche
     const roundedValue = Math.round(average);
 
-    // Créer une chaîne d'étoiles basée sur la valeur arrondie
     const stars = "⭐".repeat(roundedValue);
 
     return stars;
@@ -16,16 +14,16 @@ function Card({ title, poster, overview, voteAverage, filmid }) {
   const starsString = convertToStars(voteAverage);
 
   return (
-    <div className="Card">
-      <h1 className="Title">{title}</h1>
-      <div className="contenaire">
-        <img src={poster} alt="" className="Images" />
+    <div className="card">
+      <h1 className="title">{title}</h1>
+      <div className="container">
+        <img src={poster} alt="" className="images" />
         <div className="info">
-          <p className="Description">{overview}</p>
+          <p className="description">{overview}</p>
           <p>{starsString}</p>
-          <div className="buttonDétail">
+          <div className="details-btn">
             <Link to={`/details/${filmid}`}>
-              <button type="button">Détail</button>
+              <button type="button">Détails</button>
             </Link>
           </div>
         </div>
