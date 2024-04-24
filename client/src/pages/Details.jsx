@@ -4,7 +4,6 @@ import PersonCard from "../components/PersonCard";
 import "./Details.scss";
 
 function Details() {
-  const token = import.meta.env.VITE_MY_API_TOKEN;
   const { filmid } = useParams();
   const [fetchResults, setFetchResults] = useState({});
   const [moreCrew, setMoreCrew] = useState(false);
