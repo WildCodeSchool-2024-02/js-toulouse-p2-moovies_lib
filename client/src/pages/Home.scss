@@ -1,35 +1,93 @@
-:root {
-  background-color: #0e141b;
+$backgroundCardColor: #1d2a38;
+$textColor: rgb(233, 232, 230);
+$fontSize1: 1.5rem;
+$fontSize2: 1.25rem;
+$fontSize3: 1.1rem;
+$fontSize4: 0.8rem;
+$spacing: 8px;
+$spacingDouble: $spacing * 2;
+
+@mixin mq($breakpoint: 768px) {
+  @media screen and (min-width: $breakpoint) {
+    @content;
+  }
 }
 
 h1 {
-  color: white;
+  font-size: $fontSize1;
+  color: $textColor;
   padding: 2%;
+  @include mq() {
+    font-size: $fontSize1 * 1.3;
+  }
 }
 
 h2 {
+  font-size: $fontSize2;
   display: flex;
   justify-content: center;
-  color: white;
+  text-align: center;
+  color: $textColor;
   padding: 5%;
+  @include mq() {
+    font-size: $fontSize2 * 1.3;
+  }
 }
 
 .direction {
   display: flex;
-  justify-content: space-around;
+  align-items: center;
   padding: 5%;
+  flex-direction: column;
+  gap: 1rem;
+  @include mq() {
+    flex-direction: row;
+    justify-content: space-around;
+  }
 }
 
 .presentation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: $fontSize4;
   padding: 5%;
+  @include mq() {
+    font-size: $fontSize4 * 1.3;
+  }
 }
 
 .container-cards {
   display: flex;
+  flex-direction: column;
   padding-inline: 2rem;
   gap: 2rem;
+  @include mq() {
+    flex-direction: row;
+  }
 }
 
 p {
-  color: white;
+  font-size: $fontSize3;
+  color: $textColor;
+  @include mq() {
+    font-size: $fontSize3 * 1.3;
+  }
+}
+
+.nanar {
+  width: 100%;
+}
+
+.pepite {
+  width: 100%;
+}
+
+.description-site {
+  display: flex;
+  max-width: 70%;
+  line-height: 2rem;
+}
+button {
+  cursor: pointer;
 }

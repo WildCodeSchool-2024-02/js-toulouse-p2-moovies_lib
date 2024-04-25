@@ -14,16 +14,16 @@ $spacingDouble: $spacing * 2;
 }
 
 .card {
+  min-width: 325px;
+  min-height: 325px;
   display: flex;
   flex-direction: column;
   border-radius: 15px;
   background-color: $backgroundCardColor;
-  @include mq() {
-    font-size: $fontSize1 * 1.3;
-  }
 }
 
 .title {
+  font-size: $fontSize1;
   display: flex;
   justify-content: start;
   color: $textColor;
@@ -35,36 +35,63 @@ $spacingDouble: $spacing * 2;
 }
 
 .images {
-  max-width: 270px;
+  max-width: 200px;
+  max-height: 200px;
   border-radius: 5%;
-  padding: 1rem;
   @include mq() {
-    font-size: $fontSize1 * 1.3;
-    max-width: 380px;
+    max-width: 400px;
+    max-height: 400px;
   }
 }
 
 .description {
-  padding: 5%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+  font-size: $fontSize4;
+  margin: 5%;
   color: $textColor;
   @include mq() {
-    font-size: $fontSize1 * 1.3;
+    font-size: $fontSize4 * 1.3;
   }
 }
 
+.noinfo {
+  display: flex;
+  align-items: center;
+}
+
+em {
+  padding-left: 1rem;
+}
+
+.container-cards {
+  padding-bottom: 2rem;
+}
+
 .container-card {
+  padding: 1rem;
   display: flex;
   justify-content: space-around;
-  @include mq() {
-    font-size: $fontSize1 * 1.3;
-  }
 }
 
 .info {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+}
+
+.vote {
+  padding-bottom: 1rem;
+  text-wrap: wrap;
+}
+
+.stars {
+  font-size: small;
+  padding-bottom: 1rem;
   @include mq() {
-    font-size: $fontSize1 * 1.3;
+    padding-bottom: 2rem;
   }
 }
