@@ -2,7 +2,6 @@ import "./Home.scss";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Card from "../components/Card";
-import logo from "../assets/images/logo.jpg";
 
 function Home() {
   const [data, setData] = useState();
@@ -10,7 +9,7 @@ function Home() {
   const [popularity] = useState(50);
 
   useEffect(() => {
-    const token = import.meta.env.VITE_API_TOKEN;
+    const token = import.meta.env.VITE_MY_API_TOKEN;
     const randomNumber = Math.floor(Math.random() * 100);
     const options = {
       method: "GET",
@@ -69,10 +68,6 @@ function Home() {
 
   return (
     <>
-      <header className="header">
-        <img className="logo" src={logo} alt="" />
-        <h1>Moovies Lib</h1>
-      </header>
       <div className="presentation">
         <h2>Bienvenue sur Moovies Lib - Votre référence cinématographique!</h2>
         <p>

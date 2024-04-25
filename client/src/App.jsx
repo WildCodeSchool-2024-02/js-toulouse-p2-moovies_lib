@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import "./App.css";
+import "./App.scss";
 import Home from "./pages/Home";
 import { ThemeContext } from "./contexts/ThemeContext";
 
