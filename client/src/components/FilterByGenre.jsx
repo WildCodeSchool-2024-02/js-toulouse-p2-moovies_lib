@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "./FilterByGenre.scss";
 import PropTypes from "prop-types";
-import filtre from "../assets/images/filtre.png";
 
 function FilterByGenre({ setGenre }) {
   const [data, setData] = useState();
@@ -20,20 +19,21 @@ function FilterByGenre({ setGenre }) {
       .then((genresData) => setData(genresData.genres))
       .catch((error) => console.error(error));
   }, []);
-
   return data ? (
     <>
-      <img src={filtre} alt="Icône de filtres" />
-      <select
-        className="FiltreStyle"
-        onChange={(event) => setGenre(event.target.value)}
-      >
-        {data.map((genre) => (
-          <option key={genre.id} value={genre.id}>
-            {genre.name}
-          </option>
-        ))}
-      </select>
+      <div className="dropdown-menu">
+        <i className="fi fi-rr-settings-sliders"></i>
+        <select
+          className="FiltreStyle"
+          onChange={(event) => setGenre(event.target.value)}
+        >
+          {data.map((genre) => (
+            <option key={genre.id} value={genre.id}>
+              {genre.name}
+            </option>
+          ))}
+        </select>
+      </div>
     </>
   ) : (
     <p>En cours de chargement...</p>

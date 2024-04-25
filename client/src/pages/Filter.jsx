@@ -25,6 +25,7 @@ function Filter() {
       })
       .catch((err) => console.error(err));
   }, [genre]);
+  console.log(film);
   return <FilterByGenre setGenre={setGenre} film={film} />;
 }
 export default Filter;
