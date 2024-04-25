@@ -20,21 +20,22 @@ function FilterByGenre({ setGenre }) {
       .catch((error) => console.error(error));
   }, []);
   return data ? (
-    <>
-      <div className="dropdown-menu">
-        <i className="fi fi-rr-settings-sliders"></i>
-        <select
-          className="FiltreStyle"
-          onChange={(event) => setGenre(event.target.value)}
-        >
-          {data.map((genre) => (
-            <option key={genre.id} value={genre.id}>
-              {genre.name}
-            </option>
-          ))}
-        </select>
-      </div>
-    </>
+    <div className="dropdown-menu">
+      <i className="fi fi-rr-settings-sliders" />
+      <select
+        className="FiltreStyle"
+        onChange={(event) => {
+          setGenre(event.target.value);
+        }}
+      >
+        <option value={[]}>Tous les genres</option>
+        {data.map((genre) => (
+          <option key={genre.id} value={genre.id}>
+            {genre.name}
+          </option>
+        ))}
+      </select>
+    </div>
   ) : (
     <p>En cours de chargement...</p>
   );
