@@ -1,7 +1,12 @@
+import SearchBar from "../components/SearchBar";
 import "./Search.scss";
 
 function Search() {
-  return <h1>Search</h1>;
+  return (
+    <>
+      <SearchBar />
+    </>
+  );
 }
 
 export default Search;
