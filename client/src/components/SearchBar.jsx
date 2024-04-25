@@ -17,18 +17,15 @@ function SearchBar() {
           Authorization: `Bearer ${token}`,
         },
       };
+
       fetch(
-        `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(
-          searchText
-        )}&page=${currentPage}&language=fr&include_adult=false&sort_by=popularity.desc`,
+        `https://api.themoviedb.org/3/search/movie?query=${searchText}&include_adult=false&language=fr&page=${currentPage}`,
         options
       )
         .then((response) => response.json())
         .then((data) => {
-          const filteredDatas = data.results.filter((e) => {
-            return e.title.toLowerCase().startsWith(searchText);
-          });
-          setSearchResult(filteredDatas);
+          console.log(data);
+          setSearchResult(data.results);
           setTotalPages(data.total_pages);
         })
         .catch((error) => {
@@ -39,7 +36,6 @@ function SearchBar() {
 
   const handlePrevious = () => {
     setCurrentPage((prev) => {
-      Math.max(prev - 1, 1);
       const prevPage = prev < totalPages ? prev - 1 : prev;
       if (prevPage !== prev) {
         window.scrollTo(0, 0);

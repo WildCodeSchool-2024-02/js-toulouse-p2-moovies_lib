@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import "./App.scss";
-import SearchBar from "./components/SearchBar";
 import Home from "./pages/Home";
 import { ThemeContext } from "./contexts/ThemeContext";
 
@@ -20,7 +19,6 @@ function App() {
         changer de theme
       </button>
       <p>couleur du theme: {theme}</p>
-      <SearchBar />
       <Home />
     </>
   );

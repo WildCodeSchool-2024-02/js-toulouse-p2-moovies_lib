@@ -16,7 +16,7 @@ function Card({ title, poster, overview, voteAverage, filmid }) {
   return (
     <div className="card">
       <h1 className="title">{title}</h1>
-      <div className="container">
+      <div className="container-card">
         <img src={poster} alt="" className="images" />
         <div className="info">
           <p className="description">{overview}</p>
