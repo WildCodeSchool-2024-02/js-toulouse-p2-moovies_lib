@@ -1,10 +1,42 @@
-.header {
+$backgroundCardColor: #1d2a38;
+$textColor: rgb(233, 232, 230);
+$fontSize1: 1.5rem;
+$fontSize2: 1.25rem;
+$fontSize3: 1.1rem;
+$fontSize4: 0.8rem;
+$spacing: 8px;
+$spacingDouble: $spacing * 2;
+
+@mixin flexDisplay($direction: column, $align: center, $justify: center) {
   display: flex;
-  justify-content: space-between;
-  background-color: #1d2a38;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+  gap: $spacing;
 }
 
-.logo {
-  border-radius: 50%;
-  width: 8%;
+@mixin mq($breakpoint: 768px) {
+  @media screen and (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+header {
+  @include flexDisplay(row, center, space-between);
+  background-color: $backgroundCardColor;
+  padding: $spacingDouble;
+  h1 {
+    font-size: $fontSize1;
+    font-weight: 200;
+    @include mq() {
+      font-size: $fontSize1 * 3;
+    }
+  }
+  .logo {
+    border-radius: 50%;
+    max-width: 64px;
+    @include mq() {
+      max-width: 128px;
+    }
+  }
 }

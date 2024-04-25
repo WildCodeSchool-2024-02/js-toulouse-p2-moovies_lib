@@ -1,18 +1,27 @@
-import "./Dropdown.scss";
-import paramIcon from "../assets/images/settings-colors-icon.svg";
+import "./DropdownSettings.scss";
 import PropTypes from "prop-types";
 import { useContext } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
 
-function Dropdown() {
+function DropdownSettings() {
   const { theme, changeTheme } = useContext(ThemeContext);
 
   return (
     <>
-      <select onChange={(e) => changeTheme(e.target.value)} defaultValue={theme}>
-        <option value="dark">dark </option>
-        <option value="light">light</option>
-      </select>
+      <div className="dropdown">
+        <i className="fi fi-rr-settings-sliders"></i>
+        <div className="dropdown-content">
+          <button type="button" className="color-selector" onClick={(e) => changeTheme("dark")}>
+            Dark
+          </button>
+          <button type="button" className="color-selector" onClick={(e) => changeTheme("light")}>
+            Light
+          </button>
+          <button type="button" className="color-selector" onClick={(e) => changeTheme("candy")}>
+            Candy
+          </button>
+        </div>
+      </div>
     </>
   );
 }
@@ -25,4 +34,4 @@ function Dropdown() {
 //   }).isRequired,
 // };
 
-export default Dropdown;
+export default DropdownSettings;
