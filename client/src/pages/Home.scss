@@ -2,17 +2,6 @@
   background-color: #0e141b;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  background-color: #1d2a38;
-}
-
-.logo {
-  border-radius: 50%;
-  width: 8%;
-}
-
 h1 {
   color: white;
   padding: 2%;
@@ -39,4 +28,8 @@ h2 {
   display: flex;
   padding-inline: 2rem;
   gap: 2rem;
+}
+
+p {
+  color: white;
 }

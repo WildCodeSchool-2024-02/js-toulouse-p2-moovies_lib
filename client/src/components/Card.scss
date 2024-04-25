@@ -17,7 +17,7 @@ $spacingDouble: $spacing * 2;
   display: flex;
   flex-direction: column;
   border-radius: 15px;
-  background-color: #1d2a38;
+  background-color: $backgroundCardColor;
   @include mq() {
     font-size: $fontSize1 * 1.3;
   }
@@ -26,7 +26,7 @@ $spacingDouble: $spacing * 2;
 .title {
   display: flex;
   justify-content: start;
-  color: white;
+  color: $textColor;
   padding: 1rem;
   margin: 0;
   @include mq() {
@@ -46,14 +46,13 @@ $spacingDouble: $spacing * 2;
 
 .description {
   padding: 5%;
-  color: white;
-  font-size: larger;
+  color: $textColor;
   @include mq() {
     font-size: $fontSize1 * 1.3;
   }
 }
 
-.container {
+.container-card {
   display: flex;
   justify-content: space-around;
   @include mq() {
