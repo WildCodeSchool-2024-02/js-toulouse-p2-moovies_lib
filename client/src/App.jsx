@@ -2,25 +2,17 @@ import { useContext } from "react";
 import "./App.scss";
 import Home from "./pages/Home";
 import { ThemeContext } from "./contexts/ThemeContext";
+import Dropdown from "./components/Dropdown";
 
 function App() {
-  const { theme, setTheme } = useContext(ThemeContext);
-  function toggleTheme() {
-    if (theme === "dark") {
-      setTheme("light");
-    } else {
-      setTheme("dark");
-    }
-  }
+  const { theme } = useContext(ThemeContext);
 
   return (
-    <>
-      <button onClick={toggleTheme} type="button">
-        changer de theme
-      </button>
+    <div className={`main-${theme}`}>
+      <Dropdown />
       <p>couleur du theme: {theme}</p>
       <Home />
-    </>
+    </div>
   );
 }
 

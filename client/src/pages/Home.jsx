@@ -26,13 +26,11 @@ function Home() {
       try {
         const response = await fetch(
           `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${randomNumber}&sort_by=popularity.desc&vote_average.gte=${userRating}s&vote_average.lte=${maxRating}&certification_country=US&certification.lte=PG-16`,
-          options
+          options,
         );
         const fetchedData = await response.json();
         const randomMovie =
-          fetchedData.results[
-            Math.floor(Math.random() * fetchedData.results.length - 1)
-          ];
+          fetchedData.results[Math.floor(Math.random() * fetchedData.results.length - 1)];
         setData(randomMovie);
       } catch (error) {
         console.error(error);
@@ -45,14 +43,14 @@ function Home() {
       try {
         const response = await fetch(
           `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${randomNumber}&sort_by=popularity.desc&certification_country=US&certification.lte=PG-16&popularity.gte  =${minPopularity}`,
-          options
+          options,
         );
         const fetchedDataPopularity = await response.json();
 
         // ici une fonction pour prendre en fonction de la popularité
 
         const popularMovies = fetchedDataPopularity.results.filter(
-          (movie) => movie.popularity >= minPopularity
+          (movie) => movie.popularity >= minPopularity,
         );
 
         const randomMoviePopularity =
@@ -71,12 +69,11 @@ function Home() {
       <div className="presentation">
         <h2>Bienvenue sur Moovies Lib - Votre référence cinématographique!</h2>
         <p>
-          Découvrez Moovies Lib, la plateforme ultime pour les amateurs de films
-          et de séries, conçue pour explorer, évaluer et discuter de vos œuvres
-          cinématographiques préférées. Inspiré par The Movie Database (TMDB),
-          Moovies Lib offre une interface utilisateur élégante et intuitive qui
-          permet aux cinéphiles de naviguer facilement à travers une vaste base
-          de données de films et de séries TV.
+          Découvrez Moovies Lib, la plateforme ultime pour les amateurs de films et de séries,
+          conçue pour explorer, évaluer et discuter de vos œuvres cinématographiques préférées.
+          Inspiré par The Movie Database (TMDB), Moovies Lib offre une interface utilisateur
+          élégante et intuitive qui permet aux cinéphiles de naviguer facilement à travers une vaste
+          base de données de films et de séries TV.
         </p>
       </div>
 
