@@ -60,7 +60,7 @@ function SearchBar() {
         type="text"
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
-        placeholder="Cherche Ton Film"
+        placeholder="Cherche ton film"
       />
       {searchResult.length !== 0 && searchText !== "" && (
         <div className="container-handleChange">
