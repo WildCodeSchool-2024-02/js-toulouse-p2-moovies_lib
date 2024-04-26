@@ -19,43 +19,6 @@ $spacingDouble: $spacing * 2;
   }
 }
 
-em {
-  font-style: italic;
-  font-weight: 300;
-}
-
-h1 {
-  font-size: $fontSize1;
-  @include mq() {
-    font-size: $fontSize1 * 1.3;
-  }
-}
-
-h2 {
-  font-size: $fontSize2;
-  font-weight: 600;
-  @include mq() {
-    font-size: $fontSize2 * 1.3;
-  }
-}
-
-h3 {
-  font-size: $fontSize3;
-  font-weight: 500;
-  padding-block: $spacing;
-  @include mq() {
-    font-size: $fontSize3 * 1.3;
-  }
-}
-
-button {
-  padding: $spacing;
-  border-radius: 15px;
-  &:hover {
-    filter: drop-shadow(0 0 5px rgba(231, 231, 231, 0.798));
-  }
-}
-
 .details-container {
   @include flexDisplay();
   padding: $spacingDouble;

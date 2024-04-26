@@ -22,10 +22,8 @@ $spacingDouble: $spacing * 2;
 
 header {
   @include flexDisplay(row, center, space-between);
-
   padding: $spacingDouble;
   h1 {
-    font-size: $fontSize1;
     font-weight: 200;
     @include mq() {
       font-size: $fontSize1 * 3;

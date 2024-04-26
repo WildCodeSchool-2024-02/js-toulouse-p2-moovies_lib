@@ -1,5 +1,4 @@
 $backgroundCardColor: #1d2a38;
-$textColor: rgb(233, 232, 230);
 $fontSize1: 1.5rem;
 $fontSize2: 1.25rem;
 $fontSize3: 1.1rem;
@@ -61,14 +60,10 @@ $spacingDouble: $spacing * 2;
       width: 100%;
       background-color: transparent;
       border-radius: 0%;
-      color: #f1f1f1;
+
       padding: $spacing $spacingDouble;
       text-decoration: none;
       display: block;
-      &:hover {
-        background-color: #f1f1f1;
-        color: #1d2a38;
-      }
     }
   }
 }

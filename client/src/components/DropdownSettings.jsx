@@ -1,5 +1,4 @@
 import "./DropdownSettings.scss";
-import PropTypes from "prop-types";
 import { useContext } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
 
@@ -7,22 +6,20 @@ function DropdownSettings() {
   const { theme, changeTheme } = useContext(ThemeContext);
 
   return (
-    <>
-      <div className="dropdown">
-        <i className="fi fi-rr-settings-sliders"></i>
-        <div className="dropdown-content">
-          <button type="button" className="color-selector" onClick={(e) => changeTheme("dark")}>
-            Dark
-          </button>
-          <button type="button" className="color-selector" onClick={(e) => changeTheme("light")}>
-            Light
-          </button>
-          <button type="button" className="color-selector" onClick={(e) => changeTheme("candy")}>
-            Candy
-          </button>
-        </div>
+    <div className="dropdown">
+      <i className="fi fi-rr-settings-sliders" />
+      <div className={`dropdown-content themed-dropdown ${theme}`}>
+        <button type="button" className="color-selector" onClick={() => changeTheme("dark")}>
+          Dark
+        </button>
+        <button type="button" className="color-selector" onClick={() => changeTheme("light")}>
+          Light
+        </button>
+        <button type="button" className="color-selector" onClick={() => changeTheme("candy")}>
+          Candy
+        </button>
       </div>
-    </>
+    </div>
   );
 }
 // Dropdown.propTypes = {

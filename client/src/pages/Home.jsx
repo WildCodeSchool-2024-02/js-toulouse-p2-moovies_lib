@@ -64,17 +64,17 @@ function Home() {
     setIsloading(false);
   }, []);
 
-  return (
+  return isLoading ? (
+    <h3>En chargement</h3>
+  ) : (
     <>
       <div className="presentation">
         <h2>Bienvenue sur Moovies Lib</h2>
         <h2>Votre référence cinématographique!</h2>
         <p className="description-site">
-          Découvrez Moovies Lib, la plateforme ultime pour les amateurs de films et de séries,
-          conçue pour explorer, évaluer et discuter de vos œuvres cinématographiques préférées.
-          <br /> Inspiré par The Movie Database (TMDB), Moovies Lib offre une interface utilisateur
-          élégante et intuitive qui permet aux cinéphiles de naviguer facilement à travers une vaste
-          base de données de films et de séries TV.
+          Découvrez Moovies Lib, la plateforme pour les amateurs de films, conçue pour explorer en
+          profondeur vos œuvres cinématographiques préférées, et en découvrir de nouvelles grace à
+          la richesse de The Movie Data Base.
         </p>
       </div>
 
@@ -88,34 +88,30 @@ function Home() {
       </div>
 
       <h2 className="selection">Sélection du jour!</h2>
-      {isLoading ? (
-        <h3>En chargement</h3>
-      ) : (
-        <div className="container-cards">
-          <div className="nanar">
-            <h2 className="title-card">Le Nanar</h2>
-            <Card
-              originalTitle={data?.original_title}
-              poster={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
-              overview={data?.overview}
-              voteAverage={data?.vote_average}
-              filmid={data?.id}
-              title={data?.title}
-            />
-          </div>
-          <div className="pepite">
-            <h2 className="title-card">La Pépite</h2>
-            <Card
-              originalTitle={dataPopularity?.original_title}
-              poster={`https://image.tmdb.org/t/p/w500/${dataPopularity?.poster_path}`}
-              overview={dataPopularity?.overview}
-              voteAverage={dataPopularity?.vote_average}
-              filmid={dataPopularity?.id}
-              title={dataPopularity?.title}
-            />
-          </div>
+      <div className="container-cards">
+        <div className="nanar">
+          <h2 className="title-card">Le Nanar</h2>
+          <Card
+            originalTitle={data?.original_title}
+            poster={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
+            overview={data?.overview}
+            voteAverage={data?.vote_average}
+            filmid={data?.id}
+            title={data?.title}
+          />
         </div>
-      )}
+        <div className="pepite">
+          <h2 className="title-card">La Pépite</h2>
+          <Card
+            originalTitle={dataPopularity?.original_title}
+            poster={`https://image.tmdb.org/t/p/w500/${dataPopularity?.poster_path}`}
+            overview={dataPopularity?.overview}
+            voteAverage={dataPopularity?.vote_average}
+            filmid={dataPopularity?.id}
+            title={dataPopularity?.title}
+          />
+        </div>
+      </div>
     </>
   );
 }

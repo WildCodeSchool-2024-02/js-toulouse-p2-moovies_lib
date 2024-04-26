@@ -2,29 +2,44 @@ $backgroundCardColor: #dfdfdf;
 $backgroundColor: #cbcbcb;
 $iconColor: black;
 $textColor: rgb(0, 0, 0);
-
+$shadowHover: rgba(80, 61, 12, 0.815);
+$shadowBox: 4px 4px 4px rgb(80, 80, 80);
 // #root {
 //   background-color: $primary-color;
 //   color: $secondary-color;
 // }
 
 .light {
-  color: black;
+  color: $textColor;
   &.themed-main {
     background-color: $backgroundColor;
-    color: black;
+    color: $textColor;
   }
   &.themed-fiche {
     background-color: $backgroundCardColor;
     color: $textColor;
+    box-shadow: $shadowBox;
   }
   & button {
-    background-color: $backgroundCardColor;
+    // background-color: $backgroundCardColor;
+    // color: $textColor;
+    &:hover {
+      filter: drop-shadow(0 0 10px $shadowHover);
+    }
   }
   &.themed-button-in-card {
     background-color: $backgroundColor;
   }
   & i {
     color: $iconColor;
+  }
+  .themed-dropdown {
+    button {
+      color: $textColor;
+      &:hover {
+        background-color: $iconColor;
+        color: $backgroundCardColor;
+      }
+    }
   }
 }
