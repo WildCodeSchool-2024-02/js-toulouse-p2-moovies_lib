@@ -60,20 +60,6 @@ button {
   border-radius: 20px;
   @include mq() {
     font-size: $fontSize3;
+    padding-inline: $spacingDouble;
   }
 }
-// .main-light {
-//   background-color: #4387d4;
-//   color: rgb(0, 0, 0);
-//   &button {
-//     color: black;
-//   }
-// }
-
-// .main-dark {
-//   background-color: black;
-//   color: white;
-//   &button {
-//     color: white;
-//   }
-// }

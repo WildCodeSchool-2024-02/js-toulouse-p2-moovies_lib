@@ -4,10 +4,6 @@ $iconColor: black;
 $textColor: rgb(0, 0, 0);
 $shadowHover: rgba(80, 61, 12, 0.815);
 $shadowBox: 4px 4px 4px rgb(80, 80, 80);
-// #root {
-//   background-color: $primary-color;
-//   color: $secondary-color;
-// }
 
 .light {
   color: $textColor;
@@ -21,8 +17,8 @@ $shadowBox: 4px 4px 4px rgb(80, 80, 80);
     box-shadow: $shadowBox;
   }
   & button {
-    // background-color: $backgroundCardColor;
-    // color: $textColor;
+    background-color: $backgroundCardColor;
+    color: $textColor;
     &:hover {
       filter: drop-shadow(0 0 10px $shadowHover);
     }
@@ -37,7 +33,7 @@ $shadowBox: 4px 4px 4px rgb(80, 80, 80);
     button {
       color: $textColor;
       &:hover {
-        background-color: $iconColor;
+        background-color: lighten($iconColor, 40%);
         color: $backgroundCardColor;
       }
     }
