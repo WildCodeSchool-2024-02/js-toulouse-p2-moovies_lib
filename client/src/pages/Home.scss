@@ -1,4 +1,3 @@
-$backgroundCardColor: #1d2a38;
 $fontSize1: 1.5rem;
 $fontSize2: 1.25rem;
 $fontSize3: 1.1rem;
@@ -12,30 +11,41 @@ $spacingDouble: $spacing * 2;
   }
 }
 
-h1 {
-  padding: 2%;
-  @include mq() {
-    font-size: $fontSize1 * 1.3;
-  }
+@mixin flexDisplay($direction: column, $align: center, $justify: center) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+  gap: $spacing;
+}
+
+.title-card {
+  display: flex;
+  justify-content: center;
+  padding-bottom: $spacingDouble;
 }
 
 h2 {
+  padding-bottom: $spacingDouble * 2;
+  display: flex;
   text-align: center;
-  padding: 5%;
+}
+
+.home-page-container {
+  @include flexDisplay(column, center, center);
+  gap: $spacingDouble;
   @include mq() {
-    font-size: $fontSize2 * 1.3;
+    gap: $spacingDouble * 4;
   }
 }
 
 .direction {
-  display: flex;
-  align-items: center;
-  padding: 5%;
-  flex-direction: column;
-  gap: 1rem;
+  @include flexDisplay();
+
   @include mq() {
-    flex-direction: row;
-    justify-content: space-around;
+    @include flexDisplay(row);
+
+    gap: 10rem;
   }
 }
 
@@ -44,7 +54,7 @@ h2 {
   flex-direction: column;
   align-items: center;
   font-size: $fontSize4;
-  padding: 5%;
+
   @include mq() {
     font-size: $fontSize4 * 1.3;
   }

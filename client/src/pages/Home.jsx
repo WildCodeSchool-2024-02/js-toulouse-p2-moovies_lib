@@ -21,17 +21,18 @@ function Home() {
     };
 
     const maxRating = 3;
-    // const userRating = 1;
 
     const fetchData = async () => {
       try {
         const response = await fetch(
           `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=fr&page=${randomNumber}&sort_by=popularity.asc&vote_average.lte=${maxRating}&vote_count.gte=20`,
-          options,
+          options
         );
         const fetchedData = await response.json();
         const randomMovie =
-          await fetchedData?.results[Math.floor(Math.random() * fetchedData.results.length - 1)];
+          await fetchedData?.results[
+            Math.floor(Math.random() * fetchedData.results.length - 1)
+          ];
         setData(randomMovie);
       } catch (error) {
         console.error(error);
@@ -41,18 +42,20 @@ function Home() {
       try {
         const response = await fetch(
           `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=fr-US&page=${randomNumber}&sort_by=popularity.desc&certification_country=US&certification.lte=PG-16&popularity.gte=${minPopularity}`,
-          options,
+          options
         );
         const fetchedDataPopularity = await response.json();
 
         // ici une fonction pour prendre en fonction de la popularité
 
         const popularMovies = fetchedDataPopularity.results.filter(
-          (movie) => movie.popularity >= minPopularity,
+          (movie) => movie.popularity >= minPopularity
         );
 
         const randomMoviePopularity =
-          await popularMovies[Math.floor(Math.random() * popularMovies.length - 1)];
+          await popularMovies[
+            Math.floor(Math.random() * popularMovies.length - 1)
+          ];
         setDataPopularity(randomMoviePopularity);
       } catch (error) {
         console.error(error);
@@ -67,14 +70,15 @@ function Home() {
   return isLoading ? (
     <h3>En chargement</h3>
   ) : (
-    <>
+    <div className="home-page-container">
       <div className="presentation">
         <h2>Bienvenue sur Moovies Lib</h2>
         <h2>Votre référence cinématographique!</h2>
         <p className="description-site">
-          Découvrez Moovies Lib, la plateforme pour les amateurs de films, conçue pour explorer en
-          profondeur vos œuvres cinématographiques préférées, et en découvrir de nouvelles grace à
-          la richesse de The Movie Data Base.
+          Découvrez Moovies Lib, la plateforme pour les amateurs de films,
+          conçue pour explorer en profondeur vos œuvres cinématographiques
+          préférées, et en découvrir de nouvelles grace à la richesse de The
+          Movie Data Base.
         </p>
       </div>
 
@@ -88,31 +92,35 @@ function Home() {
       </div>
 
       <h2 className="selection">Sélection du jour!</h2>
-      <div className="container-cards">
-        <div className="nanar">
-          <h2 className="title-card">Le Nanar</h2>
-          <Card
-            originalTitle={data?.original_title}
-            poster={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
-            overview={data?.overview}
-            voteAverage={data?.vote_average}
-            filmid={data?.id}
-            title={data?.title}
-          />
+      {isLoading ? (
+        <h3>En chargement</h3>
+      ) : (
+        <div className="container-cards">
+          <div className="nanar">
+            <h2 className="title-card">Le Nanard</h2>
+            <Card
+              originalTitle={data?.original_title}
+              poster={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
+              overview={data?.overview}
+              voteAverage={data?.vote_average}
+              filmid={data?.id}
+              title={data?.title}
+            />
+          </div>
+          <div className="pepite">
+            <h2 className="title-card">La Pépite</h2>
+            <Card
+              originalTitle={dataPopularity?.original_title}
+              poster={`https://image.tmdb.org/t/p/w500/${dataPopularity?.poster_path}`}
+              overview={dataPopularity?.overview}
+              voteAverage={dataPopularity?.vote_average}
+              filmid={dataPopularity?.id}
+              title={dataPopularity?.title}
+            />
+          </div>
         </div>
-        <div className="pepite">
-          <h2 className="title-card">La Pépite</h2>
-          <Card
-            originalTitle={dataPopularity?.original_title}
-            poster={`https://image.tmdb.org/t/p/w500/${dataPopularity?.poster_path}`}
-            overview={dataPopularity?.overview}
-            voteAverage={dataPopularity?.vote_average}
-            filmid={dataPopularity?.id}
-            title={dataPopularity?.title}
-          />
-        </div>
-      </div>
-    </>
+      )}
+    </div>
   );
 }
 

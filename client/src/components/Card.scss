@@ -14,11 +14,14 @@ $spacingDouble: $spacing * 2;
 }
 
 .card {
-  min-width: 325px;
   min-height: 325px;
   display: flex;
   flex-direction: column;
   border-radius: 15px;
+
+  @include mq() {
+    height: 520px;
+  }
 }
 
 .title {
