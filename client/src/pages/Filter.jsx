@@ -1,10 +1,12 @@
 import "./Filter.scss";
 import { useEffect, useState } from "react";
 import FilterByGenre from "../components/FilterByGenre";
+import Card from "../components/Card";
 
 function Filter() {
-  const [film, setFilm] = useState();
-  const [genre, setGenre] = useState();
+  const [films, setFilms] = useState();
+  const [genre, setGenre] = useState([]);
+
   useEffect(() => {
     const options = {
       method: "GET",
@@ -15,17 +17,31 @@ function Filter() {
       },
     };
 
-    fetch(
-      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=fr&page=1&sort_by=popularity.desc&with_genres=${genre}`,
-      options
-    )
+    const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=fr&page=1&sort_by=popularity.desc&with_genres=${genre}`;
+
+    fetch(url, options)
       .then((response) => response.json())
       .then((filmData) => {
-        setFilm(filmData.results);
+        setFilms(filmData.results);
       })
       .catch((err) => console.error(err));
   }, [genre]);
-  console.log(film);
-  return <FilterByGenre setGenre={setGenre} film={film} />;
+
+  return (
+    <>
+      <FilterByGenre setGenre={setGenre} films={films} />
+      {films &&
+        films.map((film) => (
+          <Card
+            key={film.id}
+            title={film.original_title}
+            poster={`https://image.tmdb.org/t/p/w500${film.poster_path}`}
+            overview={film.overview}
+            voteAverage={film.vote_average}
+            filmid={film.id}
+          />
+        ))}
+    </>
+  );
 }
 export default Filter;
