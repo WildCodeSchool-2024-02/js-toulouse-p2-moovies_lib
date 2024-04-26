@@ -8,9 +8,9 @@ function SearchBar() {
   const [searchResult, setSearchResult] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const token = import.meta.env.VITE_MY_API_TOKEN;
 
   useEffect(() => {
+    const token = import.meta.env.VITE_MY_API_TOKEN;
     if (searchText !== "") {
       const options = {
         method: "GET",

@@ -5,9 +5,8 @@ export const ThemeContext = createContext();
 
 export function ThemeContextProvider({ children }) {
   const [theme, setTheme] = useState("dark");
-  const changeTheme = (value) => {
-    return setTheme(value);
-  };
+  const changeTheme = (value) => setTheme(value);
+
   const themeValue = useMemo(() => ({ theme, changeTheme }), [theme]);
 
   return <ThemeContext.Provider value={themeValue}>{children}</ThemeContext.Provider>;

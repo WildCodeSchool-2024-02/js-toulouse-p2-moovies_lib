@@ -61,5 +61,6 @@ button {
   @include mq() {
     font-size: $fontSize3;
     padding-inline: $spacingDouble;
+    padding-block: calc($spacingDouble * 1);
   }
 }

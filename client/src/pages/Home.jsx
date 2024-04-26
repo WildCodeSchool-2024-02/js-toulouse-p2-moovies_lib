@@ -6,10 +6,10 @@ import Card from "../components/Card";
 function Home() {
   const [data, setData] = useState({});
   const [dataPopularity, setDataPopularity] = useState({});
-  const [popularity] = useState(50);
   const [isLoading, setIsloading] = useState(true);
 
   useEffect(() => {
+    const popularity = 50;
     const token = import.meta.env.VITE_MY_API_TOKEN;
     const randomNumber = Math.floor(Math.random() * 10);
     const options = {
