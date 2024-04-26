@@ -1,5 +1,3 @@
-$backgroundCardColor: #1d2a38;
-$textColor: rgb(233, 232, 230);
 $fontSize1: 1.5rem;
 $fontSize2: 1.25rem;
 $fontSize3: 1.1rem;
@@ -19,45 +17,6 @@ $spacingDouble: $spacing * 2;
   @media screen and (min-width: $breakpoint) {
     @content;
   }
-}
-
-em {
-  font-style: italic;
-  font-weight: 300;
-}
-
-h1 {
-  font-size: $fontSize1;
-  @include mq() {
-    font-size: $fontSize1 * 1.3;
-  }
-}
-
-h2 {
-  font-size: $fontSize2;
-  font-weight: 600;
-  @include mq() {
-    font-size: $fontSize2 * 1.3;
-  }
-}
-
-h3 {
-  font-size: $fontSize3;
-  font-weight: 500;
-  padding-block: $spacing;
-  @include mq() {
-    font-size: $fontSize3 * 1.3;
-  }
-}
-
-button {
-  background-color: $backgroundCardColor;
-  color: $textColor;
-  padding: $spacing;
-  border-radius: 15px;
-}
-button:hover {
-  filter: drop-shadow(0 0 5px $textColor);
 }
 
 .details-container {
@@ -92,9 +51,6 @@ button:hover {
       }
       ul {
         padding-block: $spacing;
-        @include mq() {
-          width: clamp(290px, 70%, 450px);
-        }
       }
       ul li {
         display: grid;
@@ -127,7 +83,6 @@ button:hover {
   }
   .crew-casting-container {
     @include flexDisplay(column, center, center);
-
     width: 100%;
     .crew-casting {
       @include flexDisplay(column, center, center);

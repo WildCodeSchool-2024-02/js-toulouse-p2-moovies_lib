@@ -1,5 +1,5 @@
 $backgroundCardColor: #1d2a38;
-$textColor: rgb(233, 232, 230);
+
 $fontSize1: 1.5rem;
 $fontSize2: 1.25rem;
 $fontSize3: 1.1rem;
@@ -19,14 +19,12 @@ $spacingDouble: $spacing * 2;
   display: flex;
   flex-direction: column;
   border-radius: 15px;
-  background-color: $backgroundCardColor;
 }
 
 .title {
   font-size: $fontSize1;
   display: flex;
   justify-content: start;
-  color: $textColor;
   padding: 1rem;
   margin: 0;
   @include mq() {
@@ -51,7 +49,6 @@ $spacingDouble: $spacing * 2;
   overflow: hidden;
   font-size: $fontSize4;
   margin: 5%;
-  color: $textColor;
   @include mq() {
     font-size: $fontSize4 * 1.3;
   }

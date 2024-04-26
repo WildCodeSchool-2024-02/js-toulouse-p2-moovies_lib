@@ -1,4 +1,3 @@
-$backgroundCardColor: #1d2a38;
 $fontSize1: 1.5rem;
 $fontSize2: 1.25rem;
 $fontSize3: 1.1rem;
@@ -24,12 +23,13 @@ $spacingDouble: $spacing * 2;
   @include flexDisplay(row-reverse, center, flex-end);
 
   padding: $spacing;
-  background-color: $backgroundCardColor;
+
   border-radius: 10px;
   width: 100%;
   min-height: 128px;
   @include mq() {
     max-width: 356px;
+    min-height: 140px;
   }
   .person-img-container {
     max-width: 80px;

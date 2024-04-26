@@ -1,0 +1,41 @@
+$backgroundCardColor: #1d2a38;
+$backgroundColor: #0e141b;
+$iconColor: rgba(255, 255, 255, 0.61);
+$textColor: rgb(233, 232, 230);
+$shadowHover: rgba(231, 231, 231, 0.798);
+$shadowBox: 4px 4px 4px rgb(0, 0, 0);
+
+.dark {
+  color: $textColor;
+  &.themed-main {
+    background-color: $backgroundColor;
+    color: $textColor;
+  }
+  &.themed-fiche {
+    background-color: $backgroundCardColor;
+    color: $textColor;
+    box-shadow: $shadowBox;
+  }
+  & button {
+    background-color: $backgroundCardColor;
+    color: $textColor;
+    &:hover {
+      filter: drop-shadow(0 0 10px $shadowHover);
+    }
+  }
+  &.themed-button-in-card {
+    background-color: $backgroundColor;
+  }
+  & i {
+    color: $iconColor;
+  }
+  .themed-dropdown {
+    button {
+      color: $textColor;
+      &:hover {
+        background-color: $shadowHover;
+        color: $backgroundCardColor;
+      }
+    }
+  }
+}
