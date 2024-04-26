@@ -30,8 +30,10 @@ $spacingDouble: $spacing * 2;
     padding-right: $spacingDouble * 8;
   }
   i {
-    color: black;
-    font-size: 2rem;
+    font-size: $fontSize1;
+    @include mq() {
+      font-size: $fontSize1 * 1.3;
+    }
   }
   &:hover {
     display: block;
@@ -44,20 +46,28 @@ $spacingDouble: $spacing * 2;
     position: absolute;
     top: 100%;
     right: 0;
+    @include mq() {
+      right: $spacingDouble * 8;
+    }
     background-color: transparent;
     min-width: max-content;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
     .color-selector {
-      font-size: $fontSize2;
+      font-size: $fontSize3;
+      @include mq() {
+        font-size: $fontSize1;
+      }
       width: 100%;
       background-color: transparent;
       border-radius: 0%;
-      color: black;
+      color: #f1f1f1;
       padding: $spacing $spacingDouble;
       text-decoration: none;
       display: block;
       &:hover {
         background-color: #f1f1f1;
+        color: #1d2a38;
       }
     }
   }

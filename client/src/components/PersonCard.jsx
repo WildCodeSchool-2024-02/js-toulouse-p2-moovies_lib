@@ -1,19 +1,18 @@
-import "./PersonCard.scss";
+import { useContext } from "react";
 import PropTypes from "prop-types";
+import { ThemeContext } from "../contexts/ThemeContext";
+import "./PersonCard.scss";
 
 function PersonCard({ person }) {
+  const { theme } = useContext(ThemeContext);
   const { character, name, job } = person;
   const noInformations = "Information non disponible";
   return (
-    <div className="person-container">
+    <div className={`themed-fiche ${theme} person-container`}>
       <div className="person-description">
         <p>
           {job ? `Job : ` : `Role : `}
-          {job ? (
-            <span>{job}</span>
-          ) : (
-            <span>{character || <em>{noInformations}</em>}</span>
-          )}
+          {job ? <span>{job}</span> : <span>{character || <em>{noInformations}</em>}</span>}
         </p>
         <p>
           Nom : <span>{name}</span>{" "}

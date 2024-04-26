@@ -1,5 +1,4 @@
 $backgroundCardColor: #1d2a38;
-$textColor: rgb(233, 232, 230);
 $fontSize1: 1.5rem;
 $fontSize2: 1.25rem;
 $fontSize3: 1.1rem;
@@ -23,7 +22,7 @@ $spacingDouble: $spacing * 2;
 
 header {
   @include flexDisplay(row, center, space-between);
-  background-color: $backgroundCardColor;
+
   padding: $spacingDouble;
   h1 {
     font-size: $fontSize1;

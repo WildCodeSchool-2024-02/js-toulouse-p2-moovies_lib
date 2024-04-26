@@ -1,0 +1,30 @@
+$backgroundCardColor: #dfdfdf;
+$backgroundColor: #cbcbcb;
+$iconColor: black;
+$textColor: rgb(0, 0, 0);
+
+// #root {
+//   background-color: $primary-color;
+//   color: $secondary-color;
+// }
+
+.light {
+  color: black;
+  &.themed-main {
+    background-color: $backgroundColor;
+    color: black;
+  }
+  &.themed-fiche {
+    background-color: $backgroundCardColor;
+    color: $textColor;
+  }
+  & button {
+    background-color: $backgroundCardColor;
+  }
+  &.themed-button-in-card {
+    background-color: $backgroundColor;
+  }
+  & i {
+    color: $iconColor;
+  }
+}
