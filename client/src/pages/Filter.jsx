@@ -6,18 +6,21 @@ import Card from "../components/Card";
 function Filter() {
   const [films, setFilms] = useState();
   const [genre, setGenre] = useState([]);
+  const [pages, setPages] = useState(1);
+  const total = 500;
+
+  const token = import.meta.env.VITE_MY_API_TOKEN;
 
   useEffect(() => {
     const options = {
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiMTk3ZWFhY2EyMTM4MmMyZTZiZmMyYTRjNTI5YzA4MiIsInN1YiI6IjY2MTY5ZDIzMTA5ZGVjMDE3YjllMjk3MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.3TeDs18ldQsvR612HvNB4DjZdTPJyovbjAVB8afs3-Q",
+        Authorization: `Bearer ${token}`,
       },
     };
 
-    const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=fr&page=1&sort_by=popularity.desc&with_genres=${genre}`;
+    const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=fr&page=${pages}&sort_by=popularity.desc&with_genres=${genre}`;
 
     fetch(url, options)
       .then((response) => response.json())
@@ -25,10 +28,19 @@ function Filter() {
         setFilms(filmData.results);
       })
       .catch((err) => console.error(err));
-  }, [genre]);
-
+  }, [genre, pages, token]);
   return (
     <>
+      {pages > 1 && (
+        <button type="button" onClick={() => setPages(pages - 1)}>
+          Précédent
+        </button>
+      )}
+      {pages < total && (
+        <button type="button" onClick={() => setPages(pages + 1)}>
+          Suivant
+        </button>
+      )}
       <FilterByGenre setGenre={setGenre} films={films} />
       {films &&
         films.map((film) => (

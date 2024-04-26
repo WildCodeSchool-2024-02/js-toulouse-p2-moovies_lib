@@ -9,6 +9,7 @@ function Details() {
   const [moreCrew, setMoreCrew] = useState(false);
   const [moreCasting, setMoreCasting] = useState(false);
   const noInformations = "Information non disponible";
+  const token = import.meta.env.VITE_MY_API_TOKEN;
 
   const scalingRate = () => {
     let comment = "";

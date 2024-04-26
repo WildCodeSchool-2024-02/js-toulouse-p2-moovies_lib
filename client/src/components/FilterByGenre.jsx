@@ -4,21 +4,21 @@ import PropTypes from "prop-types";
 
 function FilterByGenre({ setGenre }) {
   const [data, setData] = useState();
+  const token = import.meta.env.VITE_MY_API_TOKEN;
 
   useEffect(() => {
     const options = {
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiMTk3ZWFhY2EyMTM4MmMyZTZiZmMyYTRjNTI5YzA4MiIsInN1YiI6IjY2MTY5ZDIzMTA5ZGVjMDE3YjllMjk3MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.3TeDs18ldQsvR612HvNB4DjZdTPJyovbjAVB8afs3-Q",
+        Authorization: `Bearer ${token}`,
       },
     };
     fetch("https://api.themoviedb.org/3/genre/movie/list?language=fr", options)
       .then((response) => response.json())
       .then((genresData) => setData(genresData.genres))
       .catch((error) => console.error(error));
-  }, []);
+  }, [token]);
   return data ? (
     <div className="dropdown-menu">
       <i className="fi fi-rr-settings-sliders" />
