@@ -9,6 +9,7 @@ function Details() {
   const [moreCrew, setMoreCrew] = useState(false);
   const [moreCasting, setMoreCasting] = useState(false);
   const noInformations = "Information non disponible";
+  const token = import.meta.env.VITE_MY_API_TOKEN;
 
   const scalingRate = () => {
     let comment = "";
@@ -38,7 +39,6 @@ function Details() {
   };
 
   useEffect(() => {
-    const token = import.meta.env.VITE_MY_API_TOKEN;
     const options = {
       method: "GET",
       headers: {
@@ -52,7 +52,7 @@ function Details() {
     )
       .then((r) => r.json())
       .then((data) => setFetchResults(data));
-  }, []);
+  }, [filmid, token]);
 
   return (
     <div className="details-container">

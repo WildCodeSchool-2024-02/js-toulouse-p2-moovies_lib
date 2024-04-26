@@ -1,7 +1,59 @@
 import "./Filter.scss";
+import { useEffect, useState } from "react";
+import FilterByGenre from "../components/FilterByGenre";
+import Card from "../components/Card";
 
 function Filter() {
-  return <h1>Filter</h1>;
-}
+  const [films, setFilms] = useState();
+  const [genre, setGenre] = useState([]);
+  const [pages, setPages] = useState(1);
+  const total = 500;
 
+  const token = import.meta.env.VITE_MY_API_TOKEN;
+
+  useEffect(() => {
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=fr&page=${pages}&sort_by=popularity.desc&with_genres=${genre}`;
+
+    fetch(url, options)
+      .then((response) => response.json())
+      .then((filmData) => {
+        setFilms(filmData.results);
+      })
+      .catch((err) => console.error(err));
+  }, [genre, pages, token]);
+  return (
+    <>
+      {pages > 1 && (
+        <button type="button" onClick={() => setPages(pages - 1)}>
+          Précédent
+        </button>
+      )}
+      {pages < total && (
+        <button type="button" onClick={() => setPages(pages + 1)}>
+          Suivant
+        </button>
+      )}
+      <FilterByGenre setGenre={setGenre} films={films} />
+      {films &&
+        films.map((film) => (
+          <Card
+            key={film.id}
+            title={film.original_title}
+            poster={`https://image.tmdb.org/t/p/w500${film.poster_path}`}
+            overview={film.overview}
+            voteAverage={film.vote_average}
+            filmid={film.id}
+          />
+        ))}
+    </>
+  );
+}
 export default Filter;
