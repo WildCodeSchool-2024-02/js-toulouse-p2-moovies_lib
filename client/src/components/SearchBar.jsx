@@ -1,14 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "./SearchBar.scss";
+import { ThemeContext } from "../contexts/ThemeContext";
 
 function SearchBar() {
+  const { theme } = useContext(ThemeContext);
   const [searchText, setSearchText] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const token = import.meta.env.VITE_MY_API_TOKEN;
 
   useEffect(() => {
+    const token = import.meta.env.VITE_MY_API_TOKEN;
     if (searchText !== "") {
       const options = {
         method: "GET",
@@ -20,11 +22,10 @@ function SearchBar() {
 
       fetch(
         `https://api.themoviedb.org/3/search/movie?query=${searchText}&include_adult=false&language=fr&page=${currentPage}`,
-        options
+        options,
       )
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           setSearchResult(data.results);
           setTotalPages(data.total_pages);
         })
@@ -75,10 +76,7 @@ function SearchBar() {
           <div key={movie.id}>
             <h2>{movie.title}</h2>
             <p>{movie.overview}</p>
-            <img
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt={movie.title}
-            />
+            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
           </div>
         ))}
       {searchText === "" && <p>Veuillez rentrer le nom d'un film</p>}
@@ -92,6 +90,7 @@ function SearchBar() {
               type="button"
               onClick={handlePrevious}
               disabled={currentPage === 1}
+              className={theme}
             >
               Précédent
             </button>
@@ -99,6 +98,7 @@ function SearchBar() {
               type="button"
               onClick={handleNext}
               disabled={currentPage === totalPages}
+              className={theme}
             >
               Suivant
             </button>

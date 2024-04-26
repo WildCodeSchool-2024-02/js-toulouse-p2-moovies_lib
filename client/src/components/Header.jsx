@@ -1,4 +1,5 @@
 import logo from "../assets/images/logo.jpg";
+import DropdownSettings from "./DropdownSettings";
 import "./Header.scss";
 
 function Header() {
@@ -6,6 +7,7 @@ function Header() {
     <header className="header">
       <img className="logo" src={logo} alt="" />
       <h1>Moovies Lib</h1>
+      <DropdownSettings />
     </header>
   );
 }

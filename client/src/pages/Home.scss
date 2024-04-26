@@ -1,35 +1,96 @@
-:root {
-  background-color: #0e141b;
+$fontSize1: 1.5rem;
+$fontSize2: 1.25rem;
+$fontSize3: 1.1rem;
+$fontSize4: 0.8rem;
+$spacing: 8px;
+$spacingDouble: $spacing * 2;
+
+@mixin mq($breakpoint: 768px) {
+  @media screen and (min-width: $breakpoint) {
+    @content;
+  }
 }
 
-h1 {
-  color: white;
-  padding: 2%;
+@mixin flexDisplay($direction: column, $align: center, $justify: center) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+  gap: $spacing;
+}
+
+.title-card {
+  display: flex;
+  justify-content: center;
+  padding-bottom: $spacingDouble;
 }
 
 h2 {
+  padding-bottom: $spacingDouble * 2;
   display: flex;
-  justify-content: center;
-  color: white;
-  padding: 5%;
+  text-align: center;
+}
+
+.home-page-container {
+  @include flexDisplay(column, center, center);
+  gap: $spacingDouble;
+  @include mq() {
+    gap: $spacingDouble * 4;
+  }
 }
 
 .direction {
-  display: flex;
-  justify-content: space-around;
-  padding: 5%;
+  @include flexDisplay();
+
+  @include mq() {
+    @include flexDisplay(row);
+
+    gap: 10rem;
+  }
 }
 
 .presentation {
-  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: $fontSize4;
+
+  @include mq() {
+    font-size: $fontSize4 * 1.3;
+  }
 }
 
 .container-cards {
   display: flex;
+  flex-direction: column;
   padding-inline: 2rem;
   gap: 2rem;
+  @include mq() {
+    flex-direction: row;
+  }
 }
 
 p {
-  color: white;
+  font-size: $fontSize3;
+
+  @include mq() {
+    font-size: $fontSize3 * 1.3;
+  }
+}
+
+.nanar {
+  width: 100%;
+}
+
+.pepite {
+  width: 100%;
+}
+
+.description-site {
+  display: flex;
+  max-width: 70%;
+  line-height: 2rem;
+}
+button {
+  cursor: pointer;
 }

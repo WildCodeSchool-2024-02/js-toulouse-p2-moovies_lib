@@ -5,11 +5,11 @@ export const ThemeContext = createContext();
 
 export function ThemeContextProvider({ children }) {
   const [theme, setTheme] = useState("dark");
-  const themeValue = useMemo(() => ({ theme, setTheme }), [theme]);
+  const changeTheme = (value) => setTheme(value);
 
-  return (
-    <ThemeContext.Provider value={themeValue}>{children}</ThemeContext.Provider>
-  );
+  const themeValue = useMemo(() => ({ theme, changeTheme }), [theme]);
+
+  return <ThemeContext.Provider value={themeValue}>{children}</ThemeContext.Provider>;
 }
 
 ThemeContextProvider.propTypes = {
