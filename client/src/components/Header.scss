@@ -23,7 +23,10 @@ $spacingDouble: $spacing * 2;
 header {
   @include flexDisplay(row, center, space-between);
   padding: $spacingDouble;
-
+  height: 15dvh;
+  @include mq() {
+    height: 20dvh;
+  }
   h1 {
     position: absolute;
     left: 0;
