@@ -36,6 +36,7 @@ $spacingDouble: $spacing * 2;
     @include flexDisplay();
     @include mq() {
       @include flexDisplay(row, flex-start, center);
+      gap: $spacingDouble * 2;
     }
     .cover {
       max-width: 270px;
