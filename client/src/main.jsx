@@ -41,5 +41,5 @@ root.render(
     <ThemeContextProvider>
       <RouterProvider router={router} />
     </ThemeContextProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );
