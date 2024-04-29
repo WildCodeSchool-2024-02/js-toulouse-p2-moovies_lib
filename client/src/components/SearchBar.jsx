@@ -71,7 +71,7 @@ function SearchBar() {
           </p>
         </div>
       )}
-
+      {searchText === "" && <i className="fi fi-ts-popcorn" />}
       {searchResult.length > 0 &&
         searchText !== "" &&
         searchResult.map((movie) => (
@@ -85,7 +85,6 @@ function SearchBar() {
           </div>
         ))}
 
-      {searchText === "" && <p>Veuillez rentrer le nom d'un film</p>}
       {searchText !== "" && searchResult.length === 0 && (
         <p>Désolé, aucun film ne correspond à ta recherche</p>
       )}
