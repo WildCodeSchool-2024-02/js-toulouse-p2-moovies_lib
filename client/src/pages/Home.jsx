@@ -69,7 +69,7 @@ function Home() {
     <div className="home-page-container">
       <div className="presentation">
         <h2>Bienvenue sur Moovies Lib</h2>
-        <h2>Votre référence cinématographique!</h2>
+        <h2>Votre cinémathèque</h2>
         <p className="description-site">
           Découvrez Moovies Lib, la plateforme pour les amateurs de films, conçue pour explorer en
           profondeur vos œuvres cinématographiques préférées, et en découvrir de nouvelles grace à
