@@ -22,7 +22,7 @@ function SearchBar() {
 
       fetch(
         `https://api.themoviedb.org/3/search/movie?query=${searchText}&include_adult=false&language=fr&page=${currentPage}`,
-        options,
+        options
       )
         .then((response) => response.json())
         .then((data) => {
@@ -76,7 +76,10 @@ function SearchBar() {
           <div key={movie.id}>
             <h2>{movie.title}</h2>
             <p>{movie.overview}</p>
-            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+            <img
+              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              alt={movie.title}
+            />
           </div>
         ))}
       {searchText === "" && <p>Veuillez rentrer le nom d'un film</p>}

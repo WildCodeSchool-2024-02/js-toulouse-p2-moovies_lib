@@ -31,28 +31,42 @@ function Filter() {
   }, [genre, pages, token]);
   return (
     <>
-      {pages > 1 && (
-        <button type="button" onClick={() => setPages(pages - 1)}>
-          Précédent
-        </button>
-      )}
-      {pages < total && (
-        <button type="button" onClick={() => setPages(pages + 1)}>
-          Suivant
-        </button>
-      )}
-      <FilterByGenre setGenre={setGenre} films={films} />
-      {films &&
-        films.map((film) => (
-          <Card
-            key={film.id}
-            title={film.original_title}
-            poster={`https://image.tmdb.org/t/p/w500${film.poster_path}`}
-            overview={film.overview}
-            voteAverage={film.vote_average}
-            filmid={film.id}
-          />
-        ))}
+      <div className="global-filter">
+        {pages > 1 && (
+          <button
+            className="butbut-previous"
+            type="button"
+            onClick={() => setPages(pages - 1)}
+          >
+            Précédent
+          </button>
+        )}
+
+        <FilterByGenre setGenre={setGenre} films={films} />
+        {pages < total && (
+          <button
+            className="butbut-next"
+            type="button"
+            onClick={() => setPages(pages + 1)}
+          >
+            Suivant
+          </button>
+        )}
+      </div>
+      <div className="filter-card-container">
+        {films &&
+          films.map((film) => (
+            <Card
+              key={film.id}
+              originalTitle={film?.original_title}
+              poster={`https://image.tmdb.org/t/p/w500/${film.poster_path}`}
+              overview={film.overview}
+              voteAverage={film.vote_average}
+              filmid={film.id}
+              title={film.title}
+            />
+          ))}
+      </div>
     </>
   );
 }
