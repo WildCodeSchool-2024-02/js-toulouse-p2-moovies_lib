@@ -26,11 +26,13 @@ function Home() {
       try {
         const response = await fetch(
           `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=fr&page=${randomNumber}&sort_by=popularity.asc&vote_average.lte=${maxRating}&vote_count.gte=20`,
-          options,
+          options
         );
         const fetchedData = await response.json();
         const randomMovie =
-          await fetchedData?.results[Math.floor(Math.random() * fetchedData.results.length - 1)];
+          await fetchedData?.results[
+            Math.floor(Math.random() * fetchedData.results.length - 1)
+          ];
         setData(randomMovie);
       } catch (error) {
         console.error(error);
@@ -40,18 +42,20 @@ function Home() {
       try {
         const response = await fetch(
           `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=fr-US&page=${randomNumber}&sort_by=popularity.desc&certification_country=US&certification.lte=PG-16&popularity.gte=${minPopularity}`,
-          options,
+          options
         );
         const fetchedDataPopularity = await response.json();
 
         // ici une fonction pour prendre en fonction de la popularité
 
         const popularMovies = fetchedDataPopularity.results.filter(
-          (movie) => movie.popularity >= minPopularity,
+          (movie) => movie.popularity >= minPopularity
         );
 
         const randomMoviePopularity =
-          await popularMovies[Math.floor(Math.random() * popularMovies.length - 1)];
+          await popularMovies[
+            Math.floor(Math.random() * popularMovies.length - 1)
+          ];
         setDataPopularity(randomMoviePopularity);
       } catch (error) {
         console.error(error);
@@ -71,9 +75,10 @@ function Home() {
         <h2>Bienvenue sur Moovies Lib</h2>
         <h2>Votre cinémathèque</h2>
         <p className="description-site">
-          Découvrez Moovies Lib, la plateforme pour les amateurs de films, conçue pour explorer en
-          profondeur vos œuvres cinématographiques préférées, et en découvrir de nouvelles grace à
-          la richesse de The Movie Data Base.
+          Découvrez Moovies Lib, la plateforme pour les amateurs de films,
+          conçue pour explorer en profondeur vos œuvres cinématographiques
+          préférées, et en découvrir de nouvelles grace à la richesse de The
+          Movie Data Base.
         </p>
       </div>
 

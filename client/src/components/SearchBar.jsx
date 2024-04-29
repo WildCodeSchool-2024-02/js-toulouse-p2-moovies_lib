@@ -72,6 +72,19 @@ function SearchBar() {
         </div>
       )}
       {searchText === "" && <i className="fi fi-ts-popcorn" />}
+      {searchResult.length > 0 &&
+        searchText !== "" &&
+        searchResult.map((movie) => (
+          <div key={movie.id}>
+            <h2>{movie.title}</h2>
+            <p>{movie.overview}</p>
+            <img
+              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              alt={movie.title}
+            />
+          </div>
+        ))}
+
       {searchText !== "" && searchResult.length === 0 && (
         <p>Désolé, aucun film ne correspond à ta recherche</p>
       )}
