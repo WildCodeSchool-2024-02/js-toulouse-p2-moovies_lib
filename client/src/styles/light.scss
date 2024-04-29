@@ -17,6 +17,10 @@ $shadowBox: 4px 4px 4px rgb(80, 80, 80);
     color: $textColor;
     box-shadow: $shadowBox;
   }
+  input[type="text"] {
+    background-color: $backgroundCardColor;
+    color: $textColor;
+  }
   & button {
     background-color: $backgroundCardColor;
     color: $textColor;
