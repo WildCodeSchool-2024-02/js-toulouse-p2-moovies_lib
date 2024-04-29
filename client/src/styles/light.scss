@@ -25,6 +25,7 @@ $shadowBox: 4px 4px 4px rgb(80, 80, 80);
     }
     select {
       color: $textColor;
+      background-color: $backgroundCardColor;
     }
   }
   input[type="text"] {
