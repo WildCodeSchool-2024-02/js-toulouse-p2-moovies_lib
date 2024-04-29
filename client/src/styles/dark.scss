@@ -15,6 +15,10 @@ $shadowBox: 4px 4px 4px rgb(0, 0, 0);
       font-weight: 200;
     }
   }
+  input[type="text"] {
+    background-color: $backgroundCardColor;
+    color: $textColor;
+  }
   &.themed-fiche {
     background-color: $backgroundCardColor;
     color: $textColor;
