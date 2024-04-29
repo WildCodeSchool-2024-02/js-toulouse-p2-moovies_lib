@@ -25,12 +25,18 @@ function Card({ originalTitle, poster, overview, voteAverage, title, filmid }) {
       <div className="container-card">
         <img src={poster} alt="" className="images" />
         <div className="info">
-          <p className="description">{overview || <em className="noinfo">{noInformations}</em>}</p>
-          <p className="vote">vote : </p>
+          <h3>Synopsys</h3>
+          <p className="description">
+            {overview || <em className="noinfo">{noInformations}</em>}
+          </p>
+          <h3 className="vote">Notes des spectateurs</h3>
           <p className="stars">{starsString}</p>
           <div className="details-btn">
             <Link to={`/details/${filmid}`}>
-              <button type="button" className={`themed-button-in-card ${theme}`}>
+              <button
+                type="button"
+                className={`themed-button-in-card ${theme}`}
+              >
                 Détails
               </button>
             </Link>
