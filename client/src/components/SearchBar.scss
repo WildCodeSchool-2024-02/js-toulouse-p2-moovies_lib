@@ -26,6 +26,12 @@ $spacingDouble: $spacing * 2;
   gap: 10px;
   min-height: 85dvh;
   padding-bottom: $spacingDouble;
+  i {
+    position: absolute;
+    font-size: $fontSize1 * 10;
+    text-align: center;
+    top: 40%;
+  }
   @include mq() {
     min-height: 80dvh;
   }
@@ -67,4 +73,8 @@ input {
     gap: $spacingDouble;
     padding: $spacingDouble * 2;
   }
+}
+
+.hollywood {
+  border-radius: 3rem;
 }

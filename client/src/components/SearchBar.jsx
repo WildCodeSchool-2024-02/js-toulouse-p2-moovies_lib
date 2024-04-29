@@ -71,7 +71,7 @@ function SearchBar() {
           </p>
         </div>
       )}
-      {searchText === "" && <p>Veuillez rentrer le nom d'un film</p>}
+      {searchText === "" && <i className="fi fi-ts-popcorn" />}
       {searchText !== "" && searchResult.length === 0 && (
         <p>Désolé, aucun film ne correspond à ta recherche</p>
       )}
