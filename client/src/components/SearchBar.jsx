@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import "./SearchBar.scss";
 import { ThemeContext } from "../contexts/ThemeContext";
+import Card from "./Card";
 
 function SearchBar() {
   const { theme } = useContext(ThemeContext);
@@ -22,7 +23,7 @@ function SearchBar() {
 
       fetch(
         `https://api.themoviedb.org/3/search/movie?query=${searchText}&include_adult=false&language=fr&page=${currentPage}`,
-        options,
+        options
       )
         .then((response) => response.json())
         .then((data) => {
@@ -61,7 +62,7 @@ function SearchBar() {
         type="text"
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
-        placeholder="Cherche Ton Film"
+        placeholder="Cherche ton film"
       />
       {searchResult.length !== 0 && searchText !== "" && (
         <div className="container-handleChange">
@@ -70,19 +71,26 @@ function SearchBar() {
           </p>
         </div>
       )}
-      {searchResult.length > 0 &&
-        searchText !== "" &&
-        searchResult.map((movie) => (
-          <div key={movie.id}>
-            <h2>{movie.title}</h2>
-            <p>{movie.overview}</p>
-            <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
-          </div>
-        ))}
       {searchText === "" && <p>Veuillez rentrer le nom d'un film</p>}
       {searchText !== "" && searchResult.length === 0 && (
         <p>Désolé, aucun film ne correspond à ta recherche</p>
       )}
+      <div className="grid-container-cards">
+        {searchResult.length > 0 &&
+          searchText !== "" &&
+          searchResult.map((movie) => (
+            <Card
+              key={movie.id}
+              originalTitle={movie?.original_title}
+              poster={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`}
+              overview={movie?.overview}
+              voteAverage={movie?.vote_average}
+              filmid={movie?.id}
+              title={movie?.title}
+            />
+          ))}
+      </div>
+
       {searchResult.length !== 0 && searchText !== "" && (
         <div className="container-handleChange">
           <div className="container-btn">
