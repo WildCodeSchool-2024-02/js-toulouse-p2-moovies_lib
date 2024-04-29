@@ -1,5 +1,4 @@
 $backgroundCardColor: #dfdfdf;
-//  #cbcbcb
 $backgroundColor: rgb(238, 238, 238);
 $iconColor: black;
 $textColor: rgb(0, 0, 0);
@@ -16,6 +15,17 @@ $shadowBox: 4px 4px 4px rgb(80, 80, 80);
     background-color: $backgroundCardColor;
     color: $textColor;
     box-shadow: $shadowBox;
+  }
+  .dropdown-menu {
+    color: $textColor;
+    background-color: $backgroundCardColor;
+    &:hover {
+      background-color: $backgroundCardColor;
+      filter: drop-shadow(0 0 20px $shadowHover);
+    }
+    select {
+      color: $textColor;
+    }
   }
   input[type="text"] {
     background-color: $backgroundCardColor;

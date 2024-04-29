@@ -15,6 +15,16 @@ $shadowBox: 4px 4px 4px rgb(0, 0, 0);
       font-weight: 200;
     }
   }
+  .dropdown-menu {
+    background-color: $backgroundCardColor;
+    &:hover {
+      background-color: $backgroundCardColor;
+      filter: drop-shadow(0 0 20px $shadowHover);
+    }
+    select {
+      color: $textColor;
+    }
+  }
   input[type="text"] {
     background-color: $backgroundCardColor;
     color: $textColor;
