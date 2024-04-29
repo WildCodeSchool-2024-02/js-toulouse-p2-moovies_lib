@@ -23,7 +23,12 @@ $spacingDouble: $spacing * 2;
 header {
   @include flexDisplay(row, center, space-between);
   padding: $spacingDouble;
+
   h1 {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    text-align: center;
     font-weight: 200;
     @include mq() {
       font-size: $fontSize1 * 3;
@@ -34,6 +39,8 @@ header {
     max-width: 64px;
     @include mq() {
       max-width: 128px;
+      position: relative;
+      z-index: 1;
     }
   }
 }

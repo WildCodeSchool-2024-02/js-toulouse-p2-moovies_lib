@@ -10,13 +10,17 @@ $shadowBox: 4px 4px 4px rgb(0, 0, 0);
   &.themed-main {
     background-color: $backgroundColor;
     color: $textColor;
+    h1 {
+      text-shadow: 0px 0px 5px $shadowHover;
+      font-weight: 200;
+    }
   }
   &.themed-fiche {
     background-color: $backgroundCardColor;
     color: $textColor;
     box-shadow: $shadowBox;
   }
-  & button {
+  button {
     background-color: $backgroundCardColor;
     color: $textColor;
     &:hover {
