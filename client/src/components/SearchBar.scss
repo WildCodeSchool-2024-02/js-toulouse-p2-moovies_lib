@@ -63,6 +63,7 @@ input {
   padding: $spacingDouble;
   @include mq() {
     grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
     gap: $spacingDouble;
     padding: $spacingDouble * 2;
   }
