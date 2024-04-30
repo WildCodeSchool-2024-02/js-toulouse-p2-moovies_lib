@@ -9,9 +9,7 @@ export function ThemeContextProvider({ children }) {
 
   const themeValue = useMemo(() => ({ theme, changeTheme }), [theme]);
 
-  return (
-    <ThemeContext.Provider value={themeValue}>{children}</ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={themeValue}>{children}</ThemeContext.Provider>;
 }
 
 ThemeContextProvider.propTypes = {

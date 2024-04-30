@@ -33,22 +33,14 @@ function Filter() {
     <>
       <div className="global-filter">
         {pages > 1 && (
-          <button
-            className="butbut-previous"
-            type="button"
-            onClick={() => setPages(pages - 1)}
-          >
+          <button className="butbut-previous" type="button" onClick={() => setPages(pages - 1)}>
             Précédent
           </button>
         )}
 
         <FilterByGenre setGenre={setGenre} films={films} />
         {pages < total && (
-          <button
-            className="butbut-next"
-            type="button"
-            onClick={() => setPages(pages + 1)}
-          >
+          <button className="butbut-next" type="button" onClick={() => setPages(pages + 1)}>
             Suivant
           </button>
         )}
