@@ -20,8 +20,10 @@ function Card({ originalTitle, poster, overview, voteAverage, title, filmid }) {
 
   return (
     <div className={`themed-fiche ${theme} card`}>
-      <h1 className="title">{originalTitle}</h1>
-      {originalTitle !== title && <em>{title}</em>}
+      <div className="title-container">
+        <h1 className="title">{originalTitle}</h1>
+        {originalTitle !== title ? <em>{title}</em> : <br />}
+      </div>
       <div className="container-card">
         <img src={poster} alt="" className="images" />
         <div className="info">
