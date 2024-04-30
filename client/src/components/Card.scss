@@ -11,6 +11,14 @@ $spacingDouble: $spacing * 2;
   }
 }
 
+@mixin flexDisplay($direction: column, $align: center, $justify: center) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+  gap: $spacing;
+}
+
 .card {
   min-height: 325px;
   display: flex;
@@ -18,9 +26,14 @@ $spacingDouble: $spacing * 2;
   border-radius: 15px;
   gap: $spacingDouble * 2;
   padding: $spacingDouble;
+  justify-content: space-around;
   @include mq() {
-    height: 520px;
+    height: 580px;
     padding: $spacingDouble * 2;
+  }
+  .title-container {
+    @include flexDisplay(column, flex-start, start);
+    gap: $spacingDouble;
   }
 }
 
@@ -59,16 +72,19 @@ $spacingDouble: $spacing * 2;
 .container-card {
   display: flex;
   justify-content: space-around;
-  gap: $spacingDouble;
+  gap: $spacingDouble * 2;
+  align-items: flex-start;
 }
 
 .info {
   gap: $spacingDouble;
-  padding: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  h3 {
+    padding: 0;
+  }
 }
 
 .vote {
