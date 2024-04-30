@@ -1,0 +1,44 @@
+$fontSize1: 1.5rem;
+$fontSize2: 1.25rem;
+$fontSize3: 1.1rem;
+$fontSize4: 0.8rem;
+$spacing: 8px;
+$spacingDouble: $spacing * 2;
+
+@mixin flexDisplay($direction: column, $align: center, $justify: center) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+  gap: $spacing;
+}
+
+@mixin mq($breakpoint: 768px) {
+  @media screen and (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+.global-filter {
+  display: flex;
+  justify-content: center;
+  padding: $spacing;
+  border-radius: 12px;
+  gap: $spacingDouble * 2;
+  align-items: center;
+  button {
+    padding-block: $spacing;
+  }
+}
+
+.filter-card-container {
+  gap: $spacingDouble;
+  padding: $spacing;
+  max-width: 100%;
+  display: grid;
+  @include mq() {
+    grid-template-columns: 1fr 1fr;
+    gap: $spacingDouble;
+    padding: $spacingDouble * 2;
+  }
+}

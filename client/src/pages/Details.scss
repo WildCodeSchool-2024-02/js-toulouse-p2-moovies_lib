@@ -1,0 +1,97 @@
+$fontSize1: 1.5rem;
+$fontSize2: 1.25rem;
+$fontSize3: 1.1rem;
+$fontSize4: 0.8rem;
+$spacing: 8px;
+$spacingDouble: $spacing * 2;
+
+@mixin flexDisplay($direction: column, $align: center, $justify: center) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+  gap: $spacing;
+}
+
+@mixin mq($breakpoint: 768px) {
+  @media screen and (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+.details-container {
+  @include flexDisplay();
+  padding: $spacingDouble;
+  h1 {
+    padding-block: $spacing;
+    text-align: center;
+  }
+  h2 {
+    padding-block: $spacing;
+    @include mq() {
+      padding-block: $spacingDouble;
+    }
+  }
+  .details-container-fiche {
+    @include flexDisplay();
+    @include mq() {
+      @include flexDisplay(row, flex-start, center);
+      gap: $spacingDouble * 2;
+    }
+    .cover {
+      max-width: 270px;
+      border-radius: 15px;
+      @include mq() {
+        max-width: 380px;
+      }
+    }
+    .fiche-informations {
+      @include mq() {
+        max-width: 40%;
+        @include flexDisplay();
+      }
+      ul {
+        padding-block: $spacing;
+      }
+      ul li {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: $spacingDouble;
+        padding-block: calc($spacing/3);
+      }
+    }
+
+    ul li div:first-child {
+      text-align: right;
+      text-wrap: nowrap;
+    }
+    ul,
+    p {
+      font-size: $fontSize4;
+      line-height: 1.5;
+      @include mq() {
+        font-size: inherit;
+      }
+    }
+  }
+  .synopsis {
+    @include mq() {
+      max-width: 20%;
+    }
+    h3 {
+      text-align: center;
+    }
+  }
+  .crew-casting-container {
+    @include flexDisplay(column, center, center);
+    width: 100%;
+    .crew-casting {
+      @include flexDisplay(column, center, center);
+      width: 100%;
+      @include mq() {
+        @include flexDisplay(row, center, center);
+        flex-wrap: wrap;
+      }
+    }
+  }
+}
