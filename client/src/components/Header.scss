@@ -1,0 +1,49 @@
+$backgroundCardColor: #1d2a38;
+$fontSize1: 1.5rem;
+$fontSize2: 1.25rem;
+$fontSize3: 1.1rem;
+$fontSize4: 0.8rem;
+$spacing: 8px;
+$spacingDouble: $spacing * 2;
+
+@mixin flexDisplay($direction: column, $align: center, $justify: center) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+  gap: $spacing;
+}
+
+@mixin mq($breakpoint: 768px) {
+  @media screen and (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+header {
+  @include flexDisplay(row, center, space-between);
+  padding: $spacingDouble;
+  height: 15dvh;
+  @include mq() {
+    height: 20dvh;
+  }
+  h1 {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-weight: 200;
+    @include mq() {
+      font-size: $fontSize1 * 3;
+    }
+  }
+  .logo {
+    border-radius: 50%;
+    max-width: 64px;
+    @include mq() {
+      max-width: 128px;
+      position: relative;
+      z-index: 1;
+    }
+  }
+}

@@ -1,0 +1,80 @@
+$fontSize1: 1.5rem;
+$fontSize2: 1.25rem;
+$fontSize3: 1.1rem;
+$fontSize4: 0.8rem;
+$spacing: 8px;
+$spacingDouble: $spacing * 2;
+
+@mixin flexDisplay($direction: column, $align: center, $justify: center) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+  gap: $spacing;
+}
+
+@mixin mq($breakpoint: 768px) {
+  @media screen and (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+.container-searchBar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-height: 85dvh;
+  padding-bottom: $spacingDouble;
+  i {
+    position: absolute;
+    font-size: $fontSize1 * 10;
+    text-align: center;
+    top: 40%;
+  }
+  @include mq() {
+    min-height: 80dvh;
+  }
+}
+
+input {
+  border-radius: $spacing;
+  border: none;
+  padding: 6px;
+  &:focus {
+    outline: none;
+  }
+}
+
+.container-handleChange {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.container-btn {
+  display: flex;
+  gap: 10px;
+}
+
+[disabled] {
+  display: none;
+}
+
+.grid-container-cards {
+  display: grid;
+  gap: $spacingDouble;
+  padding: $spacingDouble;
+  @include mq() {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
+    gap: $spacingDouble;
+    padding: $spacingDouble * 2;
+  }
+}
+
+.hollywood {
+  border-radius: 3rem;
+}

@@ -1,0 +1,70 @@
+$backgroundCardColor: #8338ec;
+$backgroundColor: #3a86ff;
+$iconColor: rgb(64, 20, 1);
+$textColor: rgb(55, 26, 14);
+$shadowHover: rgba(255, 0, 110, 0.815);
+$shadowBox: 4px 4px 15px rgb(255, 0, 110);
+
+.candy {
+  color: $textColor;
+  &.themed-main {
+    header {
+      color: #ffbe0b;
+      h1 {
+        text-shadow: 0px 0px 10px rgb(255, 0, 110);
+        filter: drop-shadow(0 0 10px $shadowHover);
+      }
+    }
+    background-color: $backgroundColor;
+    color: $textColor;
+    h2 {
+      color: #ffbe0b;
+      text-shadow: 0px 0px 10px rgb(255, 0, 110);
+    }
+  }
+  .dropdown-menu {
+    color: $textColor;
+    background-color: $backgroundCardColor;
+    &:hover {
+      background-color: $backgroundCardColor;
+      filter: drop-shadow(0 0 20px $shadowHover);
+      background-color: $shadowHover;
+    }
+    select {
+      color: $textColor;
+    }
+  }
+  input[type="text"] {
+    background-color: $backgroundCardColor;
+    color: rgb(255, 0, 110);
+  }
+  &.themed-fiche {
+    background-color: $backgroundCardColor;
+    color: $textColor;
+    box-shadow: $shadowBox;
+  }
+  & button {
+    background-color: $backgroundCardColor;
+    color: $textColor;
+    &:hover {
+      background-color: $shadowHover;
+      color: $backgroundCardColor;
+      filter: drop-shadow(0 0 20px $shadowHover);
+    }
+  }
+  &.themed-button-in-card {
+    background-color: $backgroundColor;
+  }
+  & i {
+    color: $iconColor;
+  }
+  .themed-dropdown {
+    button {
+      color: $textColor;
+      &:hover {
+        background-color: $shadowHover;
+        color: $backgroundCardColor;
+      }
+    }
+  }
+}

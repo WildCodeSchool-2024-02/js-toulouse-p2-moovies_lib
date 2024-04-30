@@ -1,0 +1,65 @@
+$backgroundCardColor: #1d2a38;
+$fontSize1: 1.5rem;
+$fontSize2: 1.25rem;
+$fontSize3: 1.1rem;
+$fontSize4: 0.8rem;
+$spacing: 8px;
+$spacingDouble: $spacing * 2;
+
+@mixin flexDisplay($direction: column, $align: center, $justify: center) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+  gap: $spacing;
+}
+
+@mixin mq($breakpoint: 768px) {
+  @media screen and (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+.dropdown {
+  position: relative;
+  background-color: transparent;
+  width: max-content;
+  @include mq() {
+    right: $spacingDouble * 5;
+  }
+  i {
+    font-size: $fontSize1;
+    @include mq() {
+      font-size: $fontSize1 * 1.3;
+    }
+  }
+  &:hover {
+    display: block;
+    .dropdown-content {
+      display: block;
+    }
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: transparent;
+    min-width: max-content;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    .color-selector {
+      font-size: $fontSize3;
+      @include mq() {
+        font-size: $fontSize1;
+      }
+      width: 100%;
+      background-color: transparent;
+      border-radius: 0%;
+
+      padding: $spacing $spacingDouble;
+      text-decoration: none;
+      display: block;
+    }
+  }
+}

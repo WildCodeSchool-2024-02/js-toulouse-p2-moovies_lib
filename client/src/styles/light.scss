@@ -1,0 +1,57 @@
+$backgroundCardColor: #dfdfdf;
+$backgroundColor: rgb(238, 238, 238);
+$iconColor: black;
+$textColor: rgb(0, 0, 0);
+$shadowHover: rgba(80, 61, 12, 0.815);
+$shadowBox: 4px 4px 4px rgb(80, 80, 80);
+
+.light {
+  color: $textColor;
+  &.themed-main {
+    background-color: $backgroundColor;
+    color: $textColor;
+  }
+  &.themed-fiche {
+    background-color: $backgroundCardColor;
+    color: $textColor;
+    box-shadow: $shadowBox;
+  }
+  .dropdown-menu {
+    color: $textColor;
+    background-color: $backgroundCardColor;
+    &:hover {
+      background-color: $backgroundCardColor;
+      filter: drop-shadow(0 0 20px $shadowHover);
+    }
+    select {
+      color: $textColor;
+      background-color: $backgroundCardColor;
+    }
+  }
+  input[type="text"] {
+    background-color: $backgroundCardColor;
+    color: $textColor;
+  }
+  & button {
+    background-color: $backgroundCardColor;
+    color: $textColor;
+    &:hover {
+      filter: drop-shadow(0 0 10px $shadowHover);
+    }
+  }
+  &.themed-button-in-card {
+    background-color: $backgroundColor;
+  }
+  & i {
+    color: $iconColor;
+  }
+  .themed-dropdown {
+    button {
+      color: $textColor;
+      &:hover {
+        background-color: lighten($iconColor, 40%);
+        color: $backgroundCardColor;
+      }
+    }
+  }
+}
