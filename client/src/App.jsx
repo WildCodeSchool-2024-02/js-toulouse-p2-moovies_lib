@@ -4,7 +4,7 @@ function App() {
   return (
     <main className="container">
       <header>
-        <h1 className="logo">pierrot bon topo</h1>
+        <h1 className="logo">Romain On a rien sans rien</h1>
       </header>
 
       <nav className="navbar">
